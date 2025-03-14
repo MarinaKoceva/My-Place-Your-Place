@@ -1,0 +1,61 @@
+/* FOOTER - ПРОЗРАЧЕН, С АДРЕС В ЛЯВО И СОЦИАЛНИ МРЕЖИ В ДЯСНО */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw; /* Заема цялата ширина */
+    height: 80px; /* Същата височина като хедъра */
+    background-color: rgba(35, 173, 35, 0.3); /* Полупрозрачен */
+    backdrop-filter: blur(10px); /* Лек размазващ ефект */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px; /* Разстояние от ръбовете */
+    font-size: 16px;
+    z-index: 1000;
+}
+
+/* ЛЯВА ЧАСТ - АДРЕС */
+.footer-left {
+    text-align: left;
+    font-size: 14px;
+}
+
+.footer-left p {
+    margin: 5px 0;
+}
+
+/* ДЯСНА ЧАСТ - СОЦИАЛНИ ИКОНИ */
+.footer-right {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-right a {
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.footer-right a:hover {
+    color: #23ad23;
+}
+
+/* РЕСПОНСИВНОСТ */
+@media screen and (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .footer-left {
+        margin-bottom: 10px;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+}

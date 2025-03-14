@@ -8,7 +8,7 @@
 @media screen and (max-width:1199px){
 	nav.navbar.bootsnav ul.nav > li > a { padding: 35px 10px;}
 	
-	.welcome-hero-txt h2{font-size: 40px;}
+	.welcome-hero-txt h2{font-size: 400px;}
 
 	.single-welcome-hero-form input {width: 177px;}
 	.welcome-hero-btn {width: 140px;}
@@ -46,9 +46,9 @@
 }/*max-width:768px*/
 
 @media screen and (max-width:767px){
-	.welcome-hero-txt h2 {font-size: 24px;}
+	.welcome-hero-txt h2 {font-size: 400px;}
 	.single-welcome-hero {height:auto;background: transparent;padding: 100px 0;display: block;}
-	.welcome-hero-txt {padding-top: 80px;}
+	.welcome-hero-txt {padding-top: 400px;}
 	.single-welcome-hero-form {flex-direction: column;width: 100%;background: #fff; margin: 15px 0;padding: 20px 0;}
 	.welcome-hero-form {width: 100%;flex-direction: column;height: 250px;background: transparent;}
 

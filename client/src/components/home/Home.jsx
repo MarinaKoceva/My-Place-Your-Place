@@ -2,7 +2,7 @@ export default function Home (){
     return (
         <section id="home" className="welcome-hero">
         <div className="container">
-          <div className="welcome-hero-txt">
+          <div className="hero-text-right">
             <h2>We believe in a more responsible way of going on vacation.</h2>
             <p>We believe that travel should serve to connect people, not disconnect them.</p>
             <p>We believe that sharing is the most sustainable way to use resources.</p>

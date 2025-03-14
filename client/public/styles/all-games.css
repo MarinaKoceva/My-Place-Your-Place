@@ -9,7 +9,7 @@
 }
 
 #catalog-page>h1 {
-    color: #fff;
+    color: #940e0e;
     font-family: "Agency FB";
     font-size: 48px;
     font-weight: 700;
@@ -18,8 +18,8 @@
     text-align: center;
 }
 
-.allPlaces {
-    background-color: #fff;
+.allGames {
+    background-color: #be1515;
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -31,13 +31,13 @@
     height: auto;
 }
 
-.allPlaces-info {
+.allGames-info {
     padding: 30px;
     position: relative;
     width: 100%;
 }
 
-.allPlaces-info>img {
+.allGames-info>img {
     margin-top: -10px;
     border-radius: 50%;
     height: 140px;
@@ -49,22 +49,22 @@
     width: 140px;
 }
 
-.allPlaces-info>h6 {
+.allGames-info>h6 {
     font-size: 20px;
     font-weight: 750;
-    color: #161618;
+    color: #17d320;
 }
 
-.allPlaces-info>h2 {
+.allGames-info>h2 {
     font-size: 20px;
     font-weight: 750;
-    color: #161618;
+    color: #9e3fbb;
 }
 
 .details-button {
-    background-color: #2A265F;
+    background-color: #2319ac;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-    color: #fff;
+    color: #f79595;
     font-size: 20px;
     position: absolute;
     bottom: 30px;

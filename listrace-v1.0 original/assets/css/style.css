@@ -1,14 +1,3 @@
-/*==================================
-* Author        : "ThemeSine"
-* Template Name : Listrace  HTML Template
-* Version       : 1.0
-==================================== */
-
-/*==================================
-font-family: 'Roboto', sans-serif;
-==================================== */
-
-
 /*=========== TABLE OF CONTENTS ===========
 1.  General css (Reset code)
 2.  Header-top
@@ -177,7 +166,7 @@ nav.navbar.bootsnav {
 /*.navbar-brand*/
 .navbar-header a.navbar-brand,.navbar-header a.navbar-brand:hover,.navbar-header a.navbar-brand:focus {
     display: inline-block;
-    color: #1b1e20;
+    color: #0d8ee4;
     font-size: 20px;
     font-weight: 700;
     padding: 34px 0px;
@@ -241,6 +230,10 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 /*-------------------------------------
         4.  Welcome-hero
 --------------------------------------*/
+.container {
+    text-align: initial !important; /* Премахва `text-align: left` */
+}
+
 .welcome-hero {
     position: relative;
     background:url(../images/welcome-hero/banner.jpg)no-repeat;
@@ -260,21 +253,22 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     background:rgba(65,73,89,.65);
     z-index: -1;
 }
-.welcome-hero-txt { padding-top: 155px;}
+.hero-text-right {
+    position: absolute !important;  /* За да може да се мести свободно */
+    top: 20%; /* Позиционира го вертикално */
+    right: 5%; /* Избутва го вдясно */
+    width: 40%; /* Ограничава ширината, за да не заема целия екран */
+    text-align: right !important; /* Принуждава текста да бъде вдясно */
+}
+.hero-text-right h2, 
+.hero-text-right p {
+    opacity: 1 !important; /* Ако JavaScript го крие */
+    font-size: 60px !important; /* По-голям текст */
+    color: #888888 !important; /* Сиво */
+    font-weight: bold;
+    text-align: right !important;
+}
 
-.welcome-hero-txt h2 {
-    font-size: 48px;
-    color: #fff;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2.4px;
-    line-height: 1.4;
-}
-.welcome-hero-txt p {
-    font-size: 18px;
-    color: #fcfcfc;
-    margin-top: 25px;
-}
 
 .welcome-hero-serch-box{margin-top: 78px;display: flex;}
 .welcome-hero-form {
@@ -948,4 +942,23 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     0%   {bottom:0px;}
     100%  {bottom:7px;}
 }
-/*========================Thank you=================
+
+
+/*========================Thank you=================*/
+
+.hero-text-right {
+    position: absolute !important;  /* За да се мести свободно */
+    top: 20% !important; /* Принуждава да остане в горната част */
+    right: 5% !important; /* Принуждава да остане вдясно */
+    width: 40% !important; /* Ограничава ширината, за да не заема целия екран */
+    text-align: right !important; /* Принуждава текста да бъде вдясно */
+}
+
+.hero-text-right h2, 
+.hero-text-right p {
+    opacity: 1 !important; /* Принудително прави текста видим */
+    font-size: 60px !important; /* Принудително голям текст */
+    color: #888888 !important; /* Принудително сиво */
+    font-weight: bold !important;
+    text-align: right !important;
+}
