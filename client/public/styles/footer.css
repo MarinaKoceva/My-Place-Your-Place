@@ -5,14 +5,14 @@ footer {
     left: 0;
     width: 100vw; /* Заема цялата ширина */
     height: 80px; /* Същата височина като хедъра */
-    background-color: rgba(35, 173, 35, 0.3); /* Полупрозрачен */
+    background-color: rgba(0, 20, 90, 0); /* Полупрозрачен */
     backdrop-filter: blur(10px); /* Лек размазващ ефект */
     color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 40px; /* Разстояние от ръбовете */
-    font-size: 16px;
+    font-size: 26px;
     z-index: 1000;
 }
 
@@ -39,7 +39,7 @@ footer {
 }
 
 .footer-right a:hover {
-    color: #23ad23;
+    color: orange;
 }
 
 /* РЕСПОНСИВНОСТ */

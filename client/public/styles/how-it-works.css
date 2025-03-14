@@ -1,0 +1,94 @@
+/* ГЛАВНА СЕКЦИЯ */
+.works {
+    width: 100%;
+    padding: 50px 5%;
+    text-align: center;
+}
+
+/* ЗАГЛАВИЕТО НА СЕКЦИЯТА */
+.section-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-header h2 {
+    font-size: 32px;
+    text-transform: initial;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.section-header p {
+    font-size: 22px;
+    color: white;
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+/* ГЛАВЕН ГРИД - 2 КОЛОНИ */
+.works-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две равни колони */
+    gap: 30px;
+    align-items: start;
+}
+
+/* ЕДИН СЕКЦИОНЕН БЛОК */
+.single-how-works {
+    text-align: center;
+}
+
+.single-how-works img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* ТЕКСТ ПОД СНИМКИТЕ – ЕДНАКВИ КОНТЕЙНЕРИ */
+.text-below {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Гарантира, че бутонът остава в долната част */
+    min-height: 180px; /* Фиксирана минимална височина за равни контейнери – коригирай според нуждите */
+}
+
+/* Заглавието на картата – ще бъде бяло */
+.text-below h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* Основният текст */
+.text-below p {
+    font-size: 16px;
+    color: whitesmoke;
+    margin-bottom: 10px;
+}
+
+/* БУТОНИТЕ – подравнени на едно ниво */
+.how-work-btn {
+    padding: 10px 20px;
+    background: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+    align-self: center; /* Центрира бутона хоризонтално, ако текстът има различна ширина */
+}
+
+.how-work-btn:hover {
+    background: orangered;
+}
+
+/* РЕСПОНСИВЕН ДИЗАЙН */
+@media screen and (max-width: 1024px) {
+    .works-content {
+        grid-template-columns: 1fr; /* Една колона на по-малки екрани */
+    }
+}

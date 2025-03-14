@@ -30,7 +30,7 @@ function App() {
                 <Routes>
                     <Route index element={<Home />} />
                     <Route path="/place" element={<PlaceCatalog />} />
-                    <Route path="/place" element={<HowItWorks />} />
+                    <Route path="/howItWorks" element={<HowItWorks />} />
                     <Route path="/place/create" element={<PlaceCreate />} />
                     <Route path="/place/:placeId/details" element={<PlaceDetails email={email} />} />
                     <Route path="/place/:placeId/edit" element={<PlaceEdit />} />
