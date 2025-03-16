@@ -20,22 +20,31 @@ footer {
 .footer-left {
     text-align: left;
     font-size: 14px;
+    color: white; /* Основният цвят на текста */
+    text-shadow: 
+        -1px -1px 2px black, 
+         1px -1px 2px black, 
+        -1px  1px 2px black, 
+         1px  1px 2px black;
 }
+
 
 .footer-left p {
     margin: 5px 0;
+
 }
 
 /* ДЯСНА ЧАСТ - СОЦИАЛНИ ИКОНИ */
 .footer-right {
     display: flex;
     gap: 15px;
+    
 }
 
 .footer-right a {
-    color: white;
-    font-size: 20px;
-    transition: color 0.3s;
+    fill: white; /* Основен цвят */
+    stroke: black; /* Черен контур */
+    stroke-width: 3px;
 }
 
 .footer-right a:hover {
