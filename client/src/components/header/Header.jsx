@@ -1,25 +1,25 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ isLoggedIn, onLogout }) {
+    const navigate = useNavigate();
 
-    {/* Тук може да има условие за логнат потребител (примерно чрез контекст или стейт)*/ }
-    const isLoggedIn = false; {/* Замени с реална логика за аутентикация*/ }
+    const handleLogout = () => {
+        onLogout(); // Изчиства логнатия потребител
+        navigate("/"); // Пренасочва към Home
+    };
 
     return (
         <header>
             <h1><Link className="home" to="/">My Place Your Place</Link></h1>
             <nav>
                 {isLoggedIn ? (
-                    // Навигация за логнати потребители
-                    < div className="nav-links">
+                    <div className="nav-links">
                         <Link to="/place">All destinations</Link>
                         <Link to="/place/create">Create Place</Link>
                         <Link to="/howItWorks">How It Works</Link>
-                        <Link to="/login">Login</Link>
-                        <Link to="/logout">Logout</Link>
+                        <span onClick={handleLogout} className="link logout">Logout</span>
                     </div>
                 ) : (
-                    // Навигация за гости
                     <div className="nav-links">
                         <Link to="/place">All destinations</Link>
                         <Link to="/howItWorks">How It Works</Link>
@@ -27,10 +27,7 @@ export default function Header() {
                         <Link to="/register">Register</Link>
                     </div>
                 )}
-
             </nav>
-        </header >
+        </header>
     );
 }
-
-

@@ -63,6 +63,18 @@ header nav {
     gap: 15px;
 }
 
+.nav-links .logout {
+    color: white !important;  /* Бял цвят */
+    cursor: pointer; /* Прави го кликваем */
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.nav-links .logout:hover {
+    color: #ff9800; /* Променя цвета при hover */
+}
+
 /* ЛИНКОВЕ В НАВИГАЦИЯТА */
 nav a {
     color: white;
