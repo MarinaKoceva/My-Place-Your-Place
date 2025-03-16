@@ -4,8 +4,8 @@ export default function Header({ isLoggedIn, onLogout }) {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        onLogout(); // Изчиства логнатия потребител
-        navigate("/"); // Пренасочва към Home
+        onLogout(); // Изчистваме логина
+        navigate("/"); // Пренасочваме към Home
     };
 
     return (
@@ -17,6 +17,7 @@ export default function Header({ isLoggedIn, onLogout }) {
                         <Link to="/place">All destinations</Link>
                         <Link to="/place/create">Create Place</Link>
                         <Link to="/howItWorks">How It Works</Link>
+                        <Link to="/profile">Profile</Link> {/* Добавен Profile линк */}
                         <span onClick={handleLogout} className="link logout">Logout</span>
                     </div>
                 ) : (
