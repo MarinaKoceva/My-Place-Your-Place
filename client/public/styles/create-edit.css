@@ -1,38 +1,68 @@
-#create-page,
-#edit-page {
-    position: relative;
-    width: 800px;
-    height: auto;
-    border-radius: 20px;
-    padding: 40px;
-    box-sizing: border-box;
-    text-align: center;
-    background: #3e4443;
-    box-shadow: 0px 0px 32px 0px #32485e, -14px -14px 20px #191c21;
+/* --- Контейнер за формата --- */
+.form-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 }
 
-input[type="text"] {
-    background: #ecf0f3;
+/* --- Основен контейнер на формата --- */
+.form-content {
+    width: 90%;
+    max-width: 700px;
+    max-height: 85vh;
     padding: 30px;
-    padding-left: 20px;
-    height: 50px;
-    margin-top: 10px;
-    font-size: 24px;
-    border-radius: 50px;
-    box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
+    padding-bottom: 60px; /* Добавя допълнително пространство под последното поле */
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto; /* Разрешава скролиране при нужда */
 }
 
+/* --- Текстова област (textarea) --- */
 textarea {
     width: 100%;
-    min-width: 20vw;
-    min-height: 7em;
-    border: 2px solid #86a480;
-    border-radius: 0.7em;
-    font-size: 26px;
-    border-bottom-color: #ecf0f3;
-    background-color: #ecf0f3;
-    border-right-color: #ecf0f3;
-    margin-top: 7px;
-    color: black;
-    box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
+    min-height: 120px; /* Увеличаваме минималната височина */
+    resize: vertical;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 12px;
+    font-size: 16px;
+}
+
+/* --- Бутон за създаване на място --- */
+.submit {
+    background: orange;
+    color: white;
+    font-size: 18px;
+    padding: 15px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    margin-top: 10px; /* Осигурява място над бутона */
+}
+
+.submit:hover {
+    background: orangered;
+}
+
+/* --- Скролиране при нужда --- */
+.form-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.form-content::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
 }

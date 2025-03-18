@@ -1,25 +1,21 @@
 import commentService from "../../services/commentService";
 
-export default function CommentsCreate({
-    email,
-    placeId,
-    onCreate,
-}) {
+export default function CommentsCreate({ email, placeId, onCreate }) {
     const commentAction = async (formData) => {
         const comment = formData.get('comment');
+        if (!comment.trim()) return; // Предотвратява празни коментари
 
         const createdComment = await commentService.create(email, placeId, comment);
-
         onCreate(createdComment);
-    }
+    };
 
     return (
-        <article className="create-comment">
-            <label>Add new comment:</label>
+        <div className="comment-box">
+            <h3>Add new comment:</h3>
             <form className="form" action={commentAction}>
-                <textarea name="comment" placeholder="Comment......"></textarea>
-                <input className="btn submit" type="submit" value="Add Comment" />
+                <textarea name="comment" placeholder="Write your comment here..."></textarea>
+                <button className="comment-btn" type="submit">Add Comment</button>
             </form>
-        </article>
+        </div>
     );
 }

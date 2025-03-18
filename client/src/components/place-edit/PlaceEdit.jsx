@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 import placeService from "../../services/placeService";
 
-
 export default function PlaceEdit() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const { placeId } = useParams();
     const [place, setPlace] = useState({});
 
@@ -18,32 +17,39 @@ export default function PlaceEdit() {
 
         await placeService.edit(placeId, placeData);
 
-        navigate(`/places/${placeId}/details`);
-    }
+        navigate(`/place/${placeId}/details`);
+    };
 
     return (
-        <section id="edit-page" className="auth">
-            <form id="edit" action={formAction}>
-                <div className="container">
+        <section id="edit-page" className="edit-container">
+            <form id="edit" action={formAction} className="edit-form">
+                <h1>Edit Your Place</h1>
+                
+                <label htmlFor="title">Title:</label>
+                <input type="text" id="title" name="title" defaultValue={place.title} />
 
-                    <h1>Edit Place</h1>
-                    <label htmlFor="leg-title">Legendary title:</label>
-                    <input type="text" id="title" name="title" defaultValue={place.title} />
+                <label htmlFor="category">Category:</label>
+                <input type="text" id="category" name="category" defaultValue={place.category} />
 
-                    <label htmlFor="category">Category:</label>
-                    <input type="text" id="category" name="category" defaultValue={place.category} />
+                <label htmlFor="address">Address:</label>
+                <input type="text" id="address" name="address" defaultValue={place.address} />
 
-                    <label htmlFor="levels">MaxLevel:</label>
-                    <input type="number" id="maxLevel" name="maxLevel" min="1" defaultValue={place.maxLevel} />
+                <label htmlFor="imageUrl">Image URL:</label>
+                <input type="text" id="imageUrl" name="imageUrl" defaultValue={place.imageUrl} />
 
-                    <label htmlFor="place-img">Image:</label>
-                    <input type="text" id="imageUrl" name="imageUrl" defaultValue={place.imageUrl} />
+                <label htmlFor="size">Size (m²):</label>
+                <input type="number" id="size" name="size" defaultValue={place.size} />
 
-                    <label htmlFor="summary">Summary:</label>
-                    <textarea name="summary" id="summary" defaultValue={place.summary}></textarea>
-                    <input className="btn submit" type="submit" defaultValue="Edit Place" />
+                <label htmlFor="rooms">Rooms:</label>
+                <input type="number" id="rooms" name="rooms" defaultValue={place.rooms} />
 
-                </div>
+                <label htmlFor="availability">Availability:</label>
+                <input type="text" id="availability" name="availability" defaultValue={place.availability} />
+
+                <label htmlFor="amenities">Amenities:</label>
+                <textarea name="amenities" id="amenities" defaultValue={place.amenities}></textarea>
+
+                <button type="submit" className="save-btn">Save Changes</button>
             </form>
         </section>
     );

@@ -1,0 +1,129 @@
+/* --- Главен контейнер на каталога --- */
+#catalog-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    position: flex;
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* --- Заглавна част на каталога --- */
+.catalog-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.catalog-header h1 {
+    color: orange;
+    font-family: "Agency FB", sans-serif;
+    font-size: 42px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.catalog-header p {
+    font-size: 18px;
+    color: #333;
+}
+
+/* --- Грид за обявите (правилно подравняване) --- */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* --- Карта за всяка обява --- */
+.catalog-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* --- Снимка в картата (поправено) --- */
+.catalog-card img {
+    width: 100%;
+    height: 180px;
+    max-height: 200px;
+    object-fit: cover; /* Поправя разтеглянето */
+    border-radius: 10px 10px 0 0;
+}
+
+/* --- Информация за обявата --- */
+.card-info {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card-info h2 {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.card-info p {
+    font-size: 16px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* 🏡 Цяла обява е кликаема */
+.place-card {
+    display: block;
+    width: 320px;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer; /* Правим курсора да е ръчичка */
+    transition: transform 0.2s ease-in-out;
+    text-decoration: none; /* Махаме сините подчертавания */
+    color: black;
+}
+
+/* 🔍 Ефект при ховър */
+.place-card:hover {
+    transform: translateY(-5px); /* Повдигане нагоре при ховър */
+}
+
+/* 🏠 Съдържанието вътре в картата */
+.place-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* 📷 Снимка на обявата */
+.place-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 📌 Категория и адрес */
+.category {
+    font-weight: bold;
+    color: green;
+}
+
+.address {
+    font-size: 14px;
+    color: gray;
+}
+

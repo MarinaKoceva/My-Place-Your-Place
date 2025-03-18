@@ -1,36 +1,27 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import placeService from "../../services/placeService";
 import CommentsShow from "../comments-show/CommentsShow";
 import CommentsCreate from "../comments-create/CommentsCreate";
 import commentService from "../../services/commentService";
 
-export default function PlaceDetails({
-    email,
-}) {
+export default function PlaceDetails({ email }) {
     const navigate = useNavigate();
     const [place, setPlace] = useState({});
     const [comments, setComments] = useState([]);
     const { placeId } = useParams();
 
     useEffect(() => {
-        placeService.getOne(placeId)
-            .then(setPlace);
-
-        commentService.getAll(placeId)
-            .then(setComments)
+        placeService.getOne(placeId).then(setPlace);
+        commentService.getAll(placeId).then(setComments);
     }, [placeId]);
 
     const placeDeleteClickHandler = async () => {
-        const hasConfirm = confirm(`Are you sure you want to delete ${place.title} place?`);
-
-        if (!hasConfirm) {
-            return;
-        }
+        const hasConfirm = confirm(`Are you sure you want to delete ${place.title}?`);
+        if (!hasConfirm) return;
 
         await placeService.delete(placeId);
-
-        navigate('/places');
+        navigate('/place'); // Връщаме към каталога
     };
 
     const commentCreateHandler = (newComment) => {
@@ -39,37 +30,42 @@ export default function PlaceDetails({
 
     return (
         <section id="place-details">
-            <h1>Place Details</h1>
-            <div className="info-section">
+            <div className="details-container">
+                {/* Лявата част със снимка + информация */}
+                <div className="details-left">
+                    <div className="place-image">
+                        <img src={place.imageUrl} alt={place.title} />
+                    </div>
+                    <div className="place-info">
+                        <h1>{place.title}</h1>
+                        <p><strong>Category:</strong> {place.category}</p>
+                        <p><strong>Address:</strong> {place.address}</p>
+                        <p><strong>Surroundings:</strong> {place.surround || "Not specified"}</p>
+                        <p><strong>Tourist sites:</strong> {place.tourists}</p>
+                        <p><strong>Size:</strong> {place.size} m²</p>
+                        <p><strong>Rooms:</strong> {place.rooms}</p>
+                        <p><strong>Available:</strong> {place.availability || "No availability set"}</p>
+                        <p><strong>Amenities:</strong> {place.amenities}</p>
+                    </div>
 
-                <div className="place-header">
-                    <img className="place-img" src={place.imageUrl} />
-                    <h1>{place.title}</h1>
-                    <span className="levels">MaxLevel: {place.maxLevel}</span>
-                    <p className="type">{place.category}</p>
+                    {/* Бутоните центрирани */}
+                    <div className="buttons">
+                        <Link to={`/place/${placeId}/edit`} className="edit-button">Edit</Link>
+                        <button onClick={placeDeleteClickHandler} className="delete-button">Delete</button>
+                    </div>
                 </div>
 
-                <p className="text">{place.summary}</p>
-
-                <CommentsShow comments={comments} />
-
-                {/* <!-- Edit/Delete buttons ( Only for creator of this place )  --> */}
-                <div className="buttons">
-                    <Link to={`/places/${placeId}/edit`} className="button">Edit</Link>
-                    <button
-                        onClick={placeDeleteClickHandler}
-                        className="button"
-                    >
-                        Delete
-                    </button>
+                {/* Дясната част с коментарите */}
+                <div className="details-right">
+                    <div className="comments-section">
+                        
+                        <CommentsShow comments={comments} />
+                    </div>
+                    <div className="comment-input-container">
+                        <CommentsCreate email={email} placeId={placeId} onCreate={commentCreateHandler} />
+                    </div>
                 </div>
             </div>
-
-            <CommentsCreate
-                email={email}
-                placeId={placeId}
-                onCreate={commentCreateHandler}
-            />
         </section>
     );
 }

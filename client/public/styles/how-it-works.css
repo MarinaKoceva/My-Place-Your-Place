@@ -3,6 +3,8 @@
     width: 100%;
     padding: 50px 5%;
     text-align: center;
+    backdrop-filter: blur(20px); /* Лек размазващ ефект */
+    position: flex;
 }
 
 /* ЗАГЛАВИЕТО НА СЕКЦИЯТА */
@@ -40,7 +42,7 @@
 }
 
 .single-how-works img {
-    width: 100%;
+    width: 60%;
     height: auto;
     border-radius: 10px;
 }

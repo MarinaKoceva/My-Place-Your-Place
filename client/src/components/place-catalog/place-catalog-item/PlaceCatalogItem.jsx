@@ -1,19 +1,20 @@
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom';
 
 export default function PlaceCatalogItem({
     _id,
     title,
     category,
     imageUrl,
+    address,
 }) {
     return (
-        <div className="allPlaces">
-            <div className="allPlaces-info">
-                <img src={imageUrl} />
-                <h6>{category}</h6>
+        <Link to={`/place/${_id}/details`} className="place-card">
+            <div className="place-content">
+                <img src={imageUrl} alt={title} className="place-image" />
                 <h2>{title}</h2>
-                <Link to={`/place/${_id}/details`} className="details-button">Details</Link>
+                <p className="category">{category}</p>
+                <p className="address">{address}</p>
             </div>
-        </div>
+        </Link>
     );
 }

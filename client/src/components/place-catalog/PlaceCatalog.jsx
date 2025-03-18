@@ -7,17 +7,22 @@ export default function PlaceCatalog() {
 
     useEffect(() => {
         placeService.getAll()
-            .then(setPlaces)
+            .then(setPlaces);
     }, []);
 
     return (
         <section id="catalog-page">
-            <h1>All Places</h1>
-            
-            {places.length > 0
-                ? places.map(place => <PlaceCatalogItem key={place._id} {...place} />)
-                : <h3 className="no-articles">No articles yet</h3>
-            }
+            <div className="catalog-header">
+                <h1>There is a home for all your desires</h1>
+                <p>A selection of houses based on your favorite criteria, to live an unforgettable experience.</p>
+            </div>
+
+            <div className="catalog-grid">
+                {places.length > 0
+                    ? places.map(place => <PlaceCatalogItem key={place._id} {...place} />)
+                    : <h3 className="no-articles">No places available</h3>
+                }
+            </div>
         </section>
     );
 }
