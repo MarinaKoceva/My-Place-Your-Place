@@ -404,11 +404,11 @@
     };
 
     const dataService = new Service_1();
-    dataService.get(':collection', actions.get);
-    dataService.post(':collection', actions.post);
-    dataService.put(':collection', actions.put);
-    dataService.patch(':collection', actions.patch);
-    dataService.delete(':collection', actions.delete);
+    dataService.get(':place', actions.get);
+    dataService.post(':place', actions.post);
+    dataService.put(':place', actions.put);
+    dataService.patch(':place', actions.patch);
+    dataService.delete(':place', actions.delete);
 
 
     var jsonstore = dataService.parseRequest;
@@ -1346,7 +1346,26 @@
     	}
     };
     var seedData = {
-    	recipes: {
+    	places: {
+            "place-1": {
+                _id: "place-1",
+                name: "Sunny Beach Resort",
+                address: "123 Beach Road",
+                description: "A beautiful beachside resort",
+                imageUrl: "https://example.com/image.jpg",
+                _createdOn: Date.now(),
+            },
+            "place-2": {
+                _id: "place-2",
+                name: "Mountain Escape",
+                address: "456 Mountain Road",
+                description: "A peaceful retreat in the mountains",
+                imageUrl: "https://example.com/mountain.jpg",
+                _createdOn: Date.now(),
+            }
+        },
+        
+        recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
     			name: "Easy Lasagna",

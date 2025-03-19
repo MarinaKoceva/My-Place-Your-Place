@@ -8,7 +8,7 @@ export default function PlaceCatalogItem({
     address,
 }) {
     return (
-        <Link to={`/place/${_id}/details`} className="place-card">
+        <Link to={`/places/${_id}/details`} className="place-card">
             <div className="place-content">
                 <img src={imageUrl} alt={title} className="place-image" />
                 <h2>{title}</h2>

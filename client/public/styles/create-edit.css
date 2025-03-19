@@ -8,8 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.4); /* По-добър контраст */
+    backdrop-filter: blur(5px); /* Леко замъгляване */
 }
 
 /* --- Основен контейнер на формата --- */
@@ -18,39 +18,55 @@
     max-width: 700px;
     max-height: 85vh;
     padding: 30px;
-    padding-bottom: 60px; /* Добавя допълнително пространство под последното поле */
+    padding-bottom: 60px; 
     background: white;
     border-radius: 20px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Разделя формата на 2 части */
     gap: 15px;
-    overflow-y: auto; /* Разрешава скролиране при нужда */
+    overflow-y: auto;
+}
+
+/* --- Етикети за полетата --- */
+label {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+    align-self: center;
+}
+
+/* --- Всички input, select и textarea полета --- */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
 }
 
 /* --- Текстова област (textarea) --- */
 textarea {
-    width: 100%;
-    min-height: 120px; /* Увеличаваме минималната височина */
+    min-height: 100px;
     resize: vertical;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    padding: 12px;
-    font-size: 16px;
 }
 
 /* --- Бутон за създаване на място --- */
 .submit {
+    grid-column: span 2; /* Заема цялата ширина */
     background: orange;
     color: white;
     font-size: 18px;
     padding: 15px;
     width: 100%;
+    max-width: 300px; /* Оптимална ширина */
     border-radius: 10px;
     cursor: pointer;
     text-align: center;
     border: none;
-    margin-top: 10px; /* Осигурява място над бутона */
+    margin: 20px auto 0 auto;
+    display: block;
 }
 
 .submit:hover {
@@ -63,6 +79,6 @@ textarea {
 }
 
 .form-content::-webkit-scrollbar-thumb {
-    background: #ccc;
+    background: #aaa;
     border-radius: 4px;
 }

@@ -39,12 +39,12 @@ function App() {
             <main id="main-content">
                 <Routes>
                     <Route index element={<Home />} />
-                    <Route path="/place" element={<PlaceCatalog />} />
-                    <Route path="/place/create" element={<PlaceCreate />} />
+                    <Route path="/places" element={<PlaceCatalog />} />
+                    <Route path="/places/create" element={<PlaceCreate />} />
                     
                     {/* 🏡 Добавени маршрути за детайли и редакция */}
-                    <Route path="/place/:placeId/details" element={<PlaceDetails email={email} />} />
-                    <Route path="/place/:placeId/edit" element={<PlaceEdit />} />
+                    <Route path="/places/:placeId/details" element={<PlaceDetails email={email} />} />
+                    <Route path="/places/:placeId/edit" element={<PlaceEdit />} />
                     
                     <Route path="/howItWorks" element={<HowItWorks />} />
                     <Route path="/profile" element={<Profile email={email} birthdate={birthdate} />} />

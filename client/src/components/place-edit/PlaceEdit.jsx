@@ -17,7 +17,7 @@ export default function PlaceEdit() {
 
         await placeService.edit(placeId, placeData);
 
-        navigate(`/place/${placeId}/details`);
+        navigate(`/places/${placeId}/details`);
     };
 
     return (

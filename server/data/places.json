@@ -1,0 +1,26 @@
+{
+    "1a2b3c4d": {
+      "_id": "1a2b3c4d",
+      "_ownerId": "user123",
+      "title": "Къща в центъра на София",
+      "address": "ул. Витошка 12, София",
+      "size": 120,
+      "rooms": 3,
+      "price": 1200,
+      "img": "https://example.com/image1.jpg",
+      "description": "Просторна къща с двор в центъра на София. Подходяща за семейство.",
+      "_createdOn": 1710767000000
+    },
+    "5e6f7g8h": {
+      "_id": "5e6f7g8h",
+      "_ownerId": "user456",
+      "title": "Апартамент с гледка към морето",
+      "address": "ул. Морски Бриз 8, Варна",
+      "size": 90,
+      "rooms": 2,
+      "price": 850,
+      "img": "https://example.com/image2.jpg",
+      "description": "Страхотен апартамент с панорамна гледка към морето.",
+      "_createdOn": 1710768000000
+    }
+  }

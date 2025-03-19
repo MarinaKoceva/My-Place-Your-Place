@@ -21,7 +21,7 @@ export default function PlaceDetails({ email }) {
         if (!hasConfirm) return;
 
         await placeService.delete(placeId);
-        navigate('/place'); // Връщаме към каталога
+        navigate('/places'); // Връщаме към каталога
     };
 
     const commentCreateHandler = (newComment) => {
@@ -50,7 +50,7 @@ export default function PlaceDetails({ email }) {
 
                     {/* Бутоните центрирани */}
                     <div className="buttons">
-                        <Link to={`/place/${placeId}/edit`} className="edit-button">Edit</Link>
+                        <Link to={`/places/${placeId}/edit`} className="edit-button">Edit</Link>
                         <button onClick={placeDeleteClickHandler} className="delete-button">Delete</button>
                     </div>
                 </div>

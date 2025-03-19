@@ -9,7 +9,7 @@ export default function Login({ onLogin }) {
         const email = event.target.email.value;
 
         onLogin(email); // Запазваме email като индикация, че е логнат
-        navigate("/place"); // Пренасочване към "All Destinations"
+        navigate("/places"); // Пренасочване към "All Destinations"
     };
 
     return (

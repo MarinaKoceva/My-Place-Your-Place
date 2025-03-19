@@ -14,15 +14,15 @@ export default function Header({ isLoggedIn, onLogout }) {
             <nav>
                 {isLoggedIn ? (
                     <div className="nav-links">
-                        <Link to="/place">All destinations</Link>
-                        <Link to="/place/create">Create Place</Link>
+                        <Link to="/places">All destinations</Link>
+                        <Link to="/places/create">Create Place</Link>
                         <Link to="/howItWorks">How It Works</Link>
                         <Link to="/profile">Profile</Link> {/* Добавен Profile линк */}
                         <span onClick={handleLogout} className="link logout">Logout</span>
                     </div>
                 ) : (
                     <div className="nav-links">
-                        <Link to="/place">All destinations</Link>
+                        <Link to="/places">All destinations</Link>
                         <Link to="/howItWorks">How It Works</Link>
                         <Link to="/login">Login</Link>
                         <Link to="/register">Register</Link>
