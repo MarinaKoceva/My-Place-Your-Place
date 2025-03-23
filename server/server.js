@@ -404,11 +404,11 @@
     };
 
     const dataService = new Service_1();
-    dataService.get(':place', actions.get);
-    dataService.post(':place', actions.post);
-    dataService.put(':place', actions.put);
-    dataService.patch(':place', actions.patch);
-    dataService.delete(':place', actions.delete);
+    dataService.get(':collection', actions.get);
+    dataService.post(':collection', actions.post);
+    dataService.put(':collection', actions.put);
+    dataService.patch(':collection', actions.patch);
+    dataService.delete(':collection', actions.delete);
 
 
     var jsonstore = dataService.parseRequest;
@@ -1346,7 +1346,7 @@
     	}
     };
     var seedData = {
-    	places: {
+        places: {
             "place-1": {
                 _id: "place-1",
                 name: "Sunny Beach Resort",
@@ -1364,8 +1364,8 @@
                 _createdOn: Date.now(),
             }
         },
-        
-        recipes: {
+
+    	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
     			name: "Easy Lasagna",
@@ -1668,7 +1668,19 @@
     			_createdOn: 1616237272948,
     			_updatedOn: 1616237293676
     		}
-    	}
+    	},
+        games: [
+            {
+                "_ownerId": "560f6ed0-86c3-4470-90a7-87bc9a80fe98",
+                "title": "MK3 Ultimate",
+                "category": "Fighting",
+                "maxLevel": "10",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Ultimate_MK3.png/220px-Ultimate_MK3.png",
+                "summary": "Ultimate Mortal Kombat 3 was released to arcades in 1995. It is an update of Mortal Kombat 3, featuring altered gameplay, additional characters, and new arenas. Various home versions of the game were released soon afterward, although none of these were completely identical to the arcade version.",
+                "_createdOn": 1742238372475,
+                "_id": "2b420d7c-3c8a-4d67-b608-b256228e60dc"
+            }
+        ]
     };
     var rules$1 = {
     	users: {
@@ -1720,3 +1732,5 @@
     return softuniPracticeServer;
 
 })));
+
+

@@ -1,9 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import { useState, useCallback } from "react";
-import placeService from "../../services/placeService";
+import { useNavigate } from "react-router";
+import { useState } from "react";
+import { useCreatePlace } from '../../api/placeApi';
 
 export default function PlaceCreate() {
     const navigate = useNavigate();
+    const { create: createPlace } = useCreatePlace();
+
     const [formData, setFormData] = useState({
         imageUrl: "",
         title: "",
@@ -28,28 +30,13 @@ export default function PlaceCreate() {
         }));
     };
 
-    const submitAction = useCallback(async (e) => {
-        e.preventDefault();
-        setError(null);
+    const submitAction = async (formData) => {
+        const placeData = Object.fromEntries(formData);
 
-        // Валидация
-        if (!formData.imageUrl.startsWith("http")) {
-            setError("Please enter a valid image URL!");
-            return;
-        }
+        await createPlace(placeData);
 
-        if (!formData.title || !formData.address || !formData.category) {
-            setError("Title, Address, and Category are required fields!");
-            return;
-        }
-
-        try {
-            await placeService.create(formData);
-            navigate("/places"); // Връща в каталога
-        } catch (err) {
-            setError("Failed to create the listing. Please try again.");
-        }
-    }, [formData, navigate]);
+        navigate('/places');
+    };
 
     return (
         <section id="create-page" className="auth">

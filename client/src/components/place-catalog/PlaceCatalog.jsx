@@ -1,14 +1,9 @@
-import { useEffect, useState } from "react";
-import placeService from "../../services/placeService";
 import PlaceCatalogItem from "./place-catalog-item/PlaceCatalogItem";
+import { usePlaces } from "../../api/placeApi";
 
 export default function PlaceCatalog() {
-    const [places, setPlaces] = useState([]);
+    const { places } = usePlaces();
 
-    useEffect(() => {
-        placeService.getAll()
-            .then(setPlaces);
-    }, []);
 
     return (
         <section id="catalog-page">

@@ -42,7 +42,7 @@ footer {
 }
 
 .footer-right a {
-    fill: white; /* Основен цвят */
+    color: rgb(2, 139, 252); /* Основен цвят */
     stroke: black; /* Черен контур */
     stroke-width: 3px;
 }

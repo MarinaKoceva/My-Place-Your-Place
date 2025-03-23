@@ -1,32 +1,35 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import placeService from "../../services/placeService";
+import { Link, useNavigate, useParams } from "react-router";
 import CommentsShow from "../comments-show/CommentsShow";
 import CommentsCreate from "../comments-create/CommentsCreate";
-import commentService from "../../services/commentService";
+import { useDeletePlace, usePlace } from "../../api/placeApi";
+import useAuth from "../../hooks/useAuth";
+import { useComments } from "../../api/commentApi";
 
-export default function PlaceDetails({ email }) {
+export default function PlaceDetails() {
     const navigate = useNavigate();
-    const [place, setPlace] = useState({});
-    const [comments, setComments] = useState([]);
+    const { email, _id: userId } = useAuth()
     const { placeId } = useParams();
-
-    useEffect(() => {
-        placeService.getOne(placeId).then(setPlace);
-        commentService.getAll(placeId).then(setComments);
-    }, [placeId]);
+    const { place } = usePlace(placeId);
+    const { deletePlace } = useDeletePlace();
+    const { comments } = useComments(placeId)
 
     const placeDeleteClickHandler = async () => {
-        const hasConfirm = confirm(`Are you sure you want to delete ${place.title}?`);
-        if (!hasConfirm) return;
+        const hasConfirm = confirm(`Are you sure you want to delete ${place.title} place?`);
 
-        await placeService.delete(placeId);
-        navigate('/places'); // Връщаме към каталога
+        if (!hasConfirm) {
+            return;
+        }
+
+        await deletePlace(placeId);
+
+        navigate('/places');
     };
 
     const commentCreateHandler = (newComment) => {
-        setComments(state => [...state, newComment]);
+        // setComments(state => [...state, newComment]);
     };
+
+    const isOwner = userId === place._ownerId;
 
     return (
         <section id="place-details">

@@ -1,25 +1,20 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import placeService from "../../services/placeService";
+import { useNavigate, useParams } from "react-router";
+import { useEditPlace, usePlace } from "../../api/placeApi";
 
 export default function PlaceEdit() {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const { placeId } = useParams();
-    const [place, setPlace] = useState({});
-
-    useEffect(() => {
-        placeService.getOne(placeId)
-            .then(setPlace);
-    }, [placeId]);
+    const { place } = usePlace(placeId)
+    const { edit } = useEditPlace();
 
     const formAction = async (formData) => {
         const placeData = Object.fromEntries(formData);
 
-        await placeService.edit(placeId, placeData);
+        await edit(placeId, placeData);
 
         navigate(`/places/${placeId}/details`);
-    };
-
+    }
+    
     return (
         <section id="edit-page" className="edit-container">
             <form id="edit" action={formAction} className="edit-form">

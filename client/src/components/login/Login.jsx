@@ -1,20 +1,34 @@
-import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
+import { useActionState, useContext } from "react";
+import { Link, useNavigate } from "react-router";
+import { useLogin } from "../../api/authApi";
+import { UserContext } from "../../contexts/UserContext";
 
-export default function Login({ onLogin }) {
+export default function Login() {
     const navigate = useNavigate();
+    const { userLoginHandler } = useContext(UserContext);
+    const { login } = useLogin();
 
-    const loginAction = (event) => {
-        event.preventDefault();
-        const email = event.target.email.value;
+    const loginHandler = async (e) => {
+        e.preventDefault();
 
-        onLogin(email); // Запазваме email като индикация, че е логнат
-        navigate("/places"); // Пренасочване към "All Destinations"
+        const formData = new FormData(e.target);
+        const values = Object.fromEntries(formData.entries());
+
+        console.log("Form values:", values);
+        
+        try {
+            const authData = await login(values.email, values.password);
+            userLoginHandler(authData);
+            navigate("/places");
+        } catch (err) {
+            console.error("Login error:", err);
+            alert("Login failed. Please check your credentials.");
+        }
     };
 
     return (
         <section id="login-page" className="auth">
-            <form id="login" onSubmit={loginAction}>
+            <form id="login" onSubmit={loginHandler}>
                 <div className="container">
                     <h1>Login</h1>
                     <label htmlFor="email">Email:</label>

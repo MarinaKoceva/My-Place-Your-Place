@@ -1,54 +1,51 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useRegister } from "../../api/authApi";
+import { UserContext } from "../../contexts/UserContext";
+import { useNavigate } from "react-router";
 
 export default function Register() {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-        confirmPassword: "",
-    });
+    const { register } = useRegister();
+    const { userLoginHandler } = useContext(UserContext)
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = (e) => {
+    const registerHandler = async (e) => {
         e.preventDefault();
+        const formData = new FormData(e.target);
 
-        // ⚡ Добави валидация ако е нужно
-        if (formData.password !== formData.confirmPassword) {
-            alert("Passwords do not match!");
+        const { email, password } = Object.fromEntries(formData);
+
+        const confirmPassword = formData.get('confirmPassword');
+
+        if (password !== confirmPassword) {
+            console.log('Password missmatch');
+
             return;
         }
 
-        // 👉 Симулираме успешна регистрация
-        console.log("User registered:", formData);
+        const authData = await register(email, password);
 
-        // ✅ Пренасочване към Login
-        navigate("/login");
+        userLoginHandler(authData);
+
+        navigate("/");
     };
 
     return (
         <div className="auth-container">
             <section id="register-page" className="auth">
-                <form id="register" onSubmit={handleSubmit}>
+                <form id="register" onSubmit={registerHandler}>
                     <div className="container">
                         <h1>Register</h1>
                         <label htmlFor="email">Email:</label>
-                        <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+                        <input type="email" id="email" name="email" placeholder="maria@abv.bg" />
 
                         <label htmlFor="pass">Password:</label>
-                        <input type="password" name="password" id="register-password" value={formData.password} onChange={handleChange} required />
+                        <input type="password" name="password" id="register-password" />
 
                         <label htmlFor="con-pass">Confirm Password:</label>
-                        <input type="password" name="confirmPassword" id="confirm-password" value={formData.confirmPassword} onChange={handleChange} required />
+                        <input type="password" name="confirmPassword" id="confirmPassword" />
 
                         <input className="btn submit" type="submit" value="Register" />
 
-                        <p className="field">
-                            <span>If you already have a profile, click <span onClick={() => navigate("/login")} className="link">here</span></span>
-                        </p>
                     </div>
                 </form>
             </section>
