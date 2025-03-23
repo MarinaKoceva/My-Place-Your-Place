@@ -1,70 +1,72 @@
-/* ОБЩ СТИЛ ЗА HOME СТРАНИЦАТА */
+/* 🏠 Основна секция на началната страница */
 .welcome-hero {
-    position: relative;
     width: 100%;
-    align-items: flex-start;
-    height: 100vh; /* Заема целия екран */
-    background-size: cover;
-    background-position: center;
+    min-height: 100vh;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
-    justify-content: flex-end; /* Премества цялото съдържание вдясно */
-    padding-right: 5%; /* Добавя отстъп отдясно */
+    background: url('../images/home-bg.jpg') no-repeat center center / cover;
+    padding: 2rem 5%;
+    position: relative;
 }
 
-/* ТЕКСТОВ БЛОК */
+/* 📦 Текстов блок */
 .hero-text-right {
-    position: absolute; /* Позволява свободно местене */
-    top: 10%; /* Премества текста по-нагоре */
-    right: 10%; /* Държи го вдясно */
-    width: 40%;
     max-width: 600px;
-    text-align: left;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    border-radius: 1rem;
     color: white;
-    background: rgba(0, 0, 0, 0.4); /* Полупрозрачен фон за четимост */
-    padding: 20px;
-    border-radius: 10px;
+    text-align: left;
 }
 
-/* ЗАГЛАВИЕ */
+/* 🧾 Заглавие */
 .hero-text-right h2 {
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: bold;
     text-transform: uppercase;
+    margin-bottom: 1rem;
 }
 
-/* ТЕКСТ */
+/* 📝 Подтекст */
 .hero-text-right p {
-    font-size: 18px;
-    margin-top: 10px;
-    justify-content: center;
+    font-size: 1.125rem;
+    line-height: 1.6;
 }
 
-/* РЕСПОНСИВЕН ДИЗАЙН */
+/* 📱 Респонсив дизайн */
 @media screen and (max-width: 1024px) {
     .hero-text-right {
-        width: 50%;
-        max-width: 500px;
+        max-width: 90%;
     }
 
     .hero-text-right h2 {
-        font-size: 32px;
+        font-size: 2rem;
     }
 
     .hero-text-right p {
-        font-size: 16px;
+        font-size: 1rem;
     }
 }
 
 @media screen and (max-width: 768px) {
     .welcome-hero {
-        justify-content: center; /* Центрира текста на малки екрани */
+        justify-content: center;
+        padding: 2rem;
     }
 
     .hero-text-right {
-        width: 80%;
-        max-width: 90%;
         text-align: center;
-        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-text-right h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-text-right p {
+        font-size: 0.95rem;
     }
 }

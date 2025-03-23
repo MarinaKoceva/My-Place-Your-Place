@@ -1,67 +1,43 @@
+/* 📦 Контейнер на профила */
 .profile-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 2rem;
     background: url("../images/background.jpg") no-repeat center center/cover;
-    
 }
 
-/* --- Основен контейнер --- */
+/* 🧾 Основна карта */
 .profile-card {
-    width: 1000px; /* Подходящ размер */
-    height: 600px; /* Достатъчно място */
+    width: 100%;
+    max-width: 1000px;
     background: white;
     border-radius: 25px;
-    padding: 50px;
+    padding: 2.5rem;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 2rem;
 }
 
-/* --- Контейнер за бутоните (Save & Log Out) --- */
-.profile-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Разстояние между бутоните */
-    width: 100%; /* Цялата ширина на контейнера */
-}
-
-/* --- Общи стилове за бутоните --- */
-.save-btn, .logout-btn {
-    background: orange;
-    color: white;
-    font-size: 20px;
-    padding: 15px;
-    width: 100%; /* Заема цялата ширина на контейнера */
-    border-radius: 10px;
-    cursor: pointer;
-    text-align: center;
-    border: none;
-}
-
-.save-btn:hover, .logout-btn:hover {
-    background: orangered;
-}
-
-/* --- Хедър на профила --- */
+/* 👤 Хедър с профилна снимка */
 .profile-header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
-/* --- Профилна снимка (вляво) --- */
 .profile-image {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     border: 3px solid #ff9800;
+    object-fit: cover;
 }
 
-/* --- Имейл (до снимката) --- */
 .profile-info {
     display: flex;
     flex-direction: column;
@@ -70,62 +46,83 @@
 
 .profile-info h2 {
     margin: 0;
-    font-size: 22px;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
 .profile-info p {
     margin: 5px 0;
-    font-size: 16px;
+    font-size: 1rem;
     color: gray;
 }
 
-/* --- Стил за рождената дата в профила --- */
 .profile-birthday {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
     color: #333;
-    margin-top: 5px;
 }
-/* --- Бутон за редакция (моливче) --- */
+
+/* ✏️ Моливче */
 .edit-btn {
     background: none;
     border: none;
-    font-size: 22px;
+    font-size: 1.5rem;
     cursor: pointer;
     margin-left: auto;
 }
 
-.save-btn {
-    background: orange;
-    color: white;
-    font-size: 20px;
-    padding: 15px;
-    width: 400px; /* Заема цялата ширина */
-    border-radius: 10px;
-    cursor: pointer;
-    align-self: center;
-    margin-top: 20px; /* Увеличаваме разстоянието над него */
-    text-align: center;
-    display: block; /* Уверяваме се, че е блоков елемент */
+/* 🔘 Бутони */
+.profile-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
 }
 
-.save-btn:hover {
-    background: orangered;
-}
-
-/* --- Лог-аут бутон (по-голям и центриран) --- */
+.save-btn,
 .logout-btn {
     background: orange;
     color: white;
-    font-size: 20px;
-    padding: 15px;
-    width: 400px; /* По-широк */
+    font-size: 1.125rem;
+    padding: 0.75rem;
+    width: 100%;
+    max-width: 400px;
     border-radius: 10px;
     cursor: pointer;
+    text-align: center;
+    border: none;
     align-self: center;
+    transition: background 0.3s ease;
 }
 
+.save-btn:hover,
 .logout-btn:hover {
     background: orangered;
+}
+
+/* 📱 РЕСПОНСИВНОСТ */
+@media screen and (max-width: 768px) {
+    .profile-card {
+        padding: 1.5rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-info {
+        align-items: center;
+    }
+
+    .edit-btn {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .save-btn,
+    .logout-btn {
+        max-width: 100%;
+    }
 }

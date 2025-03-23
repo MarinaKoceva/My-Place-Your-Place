@@ -3,39 +3,38 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    padding: 2rem;
     background: rgba(255, 255, 255, 0.1);
-    position: flex;
     backdrop-filter: blur(20px);
-    border-radius: 10px;
-    max-width: 1200px;
+    border-radius: 0.625rem;
+    max-width: 100%;
     margin: auto;
 }
 
 /* --- Заглавна част на каталога --- */
 .catalog-header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
 }
 
 .catalog-header h1 {
     color: orange;
     font-family: "Agency FB", sans-serif;
-    font-size: 42px;
+    font-size: clamp(1.8rem, 5vw, 2.625rem);
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .catalog-header p {
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #333;
 }
 
-/* --- Грид за обявите (правилно подравняване) --- */
+/* --- Грид за обявите --- */
 .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1.25rem;
     width: 100%;
     justify-content: center;
 }
@@ -43,8 +42,8 @@
 /* --- Карта за всяка обява --- */
 .catalog-card {
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0.75rem;
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
@@ -53,51 +52,52 @@
     justify-content: space-between;
 }
 
-/* --- Снимка в картата (поправено) --- */
+/* --- Снимка в картата --- */
 .catalog-card img {
     width: 100%;
-    height: 180px;
-    max-height: 200px;
-    object-fit: cover; /* Поправя разтеглянето */
-    border-radius: 10px 10px 0 0;
+    height: auto;
+    max-height: 12.5rem;
+    object-fit: cover;
+    border-radius: 0.625rem 0.625rem 0 0;
 }
 
 /* --- Информация за обявата --- */
 .card-info {
-    padding: 15px;
+    padding: 1rem;
     text-align: center;
     flex-grow: 1;
 }
 
 .card-info h2 {
-    font-size: 20px;
+    font-size: 1.25rem;
     color: #333;
     font-weight: bold;
 }
 
 .card-info p {
-    font-size: 16px;
+    font-size: 1rem;
     color: #666;
-    margin-top: 5px;
+    margin-top: 0.3125rem;
 }
 
 /* 🏡 Цяла обява е кликаема */
 .place-card {
     display: block;
-    width: 320px;
+    width: 100%;
+    max-width: 20rem;
     background: white;
-    border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    cursor: pointer; /* Правим курсора да е ръчичка */
+    border-radius: 0.9375rem;
+    padding: 1rem;
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.2);
+    cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    text-decoration: none; /* Махаме сините подчертавания */
+    text-decoration: none;
     color: black;
 }
 
 /* 🔍 Ефект при ховър */
 .place-card:hover {
-    transform: translateY(-5px); /* Повдигане нагоре при ховър */
+    transform: translateY(-0.3125rem);
 }
 
 /* 🏠 Съдържанието вътре в картата */
@@ -111,9 +111,9 @@
 /* 📷 Снимка на обявата */
 .place-image {
     width: 100%;
-    height: 180px;
+    height: 11.25rem;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 0.625rem;
 }
 
 /* 📌 Категория и адрес */
@@ -123,7 +123,25 @@
 }
 
 .address {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: gray;
 }
 
+/* 🌐 Респонсив стилове */
+@media (max-width: 768px) {
+    #catalog-page {
+        padding: 1rem;
+    }
+
+    .catalog-header h1 {
+        font-size: 2rem;
+    }
+
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .place-card {
+        max-width: 100%;
+    }
+}

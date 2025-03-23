@@ -1,96 +1,122 @@
-/* ГЛАВНА СЕКЦИЯ */
+/* 🧩 ГЛАВНА СЕКЦИЯ */
 .works {
     width: 100%;
     padding: 50px 5%;
     text-align: center;
-    backdrop-filter: blur(20px); /* Лек размазващ ефект */
-    position: flex;
+    backdrop-filter: blur(20px);
 }
 
-/* ЗАГЛАВИЕТО НА СЕКЦИЯТА */
+/* 🔠 ЗАГЛАВИЕТО НА СЕКЦИЯТА */
 .section-header {
-    text-align: center;
     margin-bottom: 30px;
 }
 
 .section-header h2 {
-    font-size: 32px;
-    text-transform: initial;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 10px;
     color: white;
 }
 
 .section-header p {
-    font-size: 22px;
+    font-size: 1.2rem;
     color: white;
     max-width: 60%;
     margin: 0 auto;
 }
 
-/* ГЛАВЕН ГРИД - 2 КОЛОНИ */
+/* 📐 ГРИД - ДВЕ КОЛОНИ */
 .works-content {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Две равни колони */
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     align-items: start;
 }
 
-/* ЕДИН СЕКЦИОНЕН БЛОК */
+/* 📦 ЕДИН ЕЛЕМЕНТ */
 .single-how-works {
     text-align: center;
 }
 
 .single-how-works img {
-    width: 60%;
+    width: 100%;
+    max-width: 300px;
     height: auto;
     border-radius: 10px;
 }
 
-/* ТЕКСТ ПОД СНИМКИТЕ – ЕДНАКВИ КОНТЕЙНЕРИ */
+/* 📄 ТЕКСТ ПОД СНИМКИТЕ */
 .text-below {
     padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Гарантира, че бутонът остава в долната част */
-    min-height: 180px; /* Фиксирана минимална височина за равни контейнери – коригирай според нуждите */
+    justify-content: space-between;
+    min-height: 180px;
 }
 
-/* Заглавието на картата – ще бъде бяло */
 .text-below h2 {
-    font-size: 26px;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 10px;
     color: white;
 }
 
-/* Основният текст */
 .text-below p {
-    font-size: 16px;
+    font-size: 1rem;
     color: whitesmoke;
     margin-bottom: 10px;
 }
 
-/* БУТОНИТЕ – подравнени на едно ниво */
+/* 🟠 БУТОНИ */
 .how-work-btn {
     padding: 10px 20px;
     background: orange;
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 1rem;
     cursor: pointer;
+    align-self: center;
     transition: background 0.3s;
-    align-self: center; /* Центрира бутона хоризонтално, ако текстът има различна ширина */
 }
 
 .how-work-btn:hover {
     background: orangered;
 }
 
-/* РЕСПОНСИВЕН ДИЗАЙН */
+/* 📱 РЕСПОНСИВЕН ДИЗАЙН */
 @media screen and (max-width: 1024px) {
     .works-content {
-        grid-template-columns: 1fr; /* Една колона на по-малки екрани */
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+        max-width: 90%;
+    }
+
+    .how-work-btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .text-below h2 {
+        font-size: 1.25rem;
+    }
+
+    .text-below p {
+        font-size: 0.95rem;
+    }
+
+    .how-work-btn {
+        width: 100%;
     }
 }
