@@ -1,95 +1,106 @@
-/* 🌐 Контейнер за Login & Register */
+/* Контейнер за подреждане на Login и Register хоризонтално */
 .auth-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
-    height: 100vh;
+    gap: 40px; /* Разстояние между формите */
+    height: 100vh; /* Запълване на целия екран */
     background: url("../images/background.jpg") no-repeat center center/cover;
-    padding: 20px;
-    flex-wrap: wrap; /* Позволява подреждане една под друга при нужда */
 }
 
-/* 🧱 Стилизация на формите */
+#register-page {
+    align-self: center; /* Центрира вертикално */
+    margin-top: -190px;  /* Повдига малко, коригирай според нужда */
+}
+
+/* Стилизация на формите (правоъгълна, бяла, полупрозрачна, с по-широк вид) */
 #login-page,
 #register-page {
-    width: 600px;
-    border-radius: 25px;
+    position: auto;
+    width: 600px; /* Увеличаваме ширината за да стане правоъгълна */
+    height: auto;
+    border-radius: 25px; /* По-голямо заобляне на краищата */
     padding: 40px;
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.85); /* Бял полупрозрачен фон */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Лека сянка */
 }
 
-/* 📦 Контейнер със съдържание */
+/* Контейнер за съдържанието */
 .container {
     padding: 20px;
-    text-align: left;
+    text-align: left; /* Ляво подравняване на съдържанието */
 }
 
-/* 🏷️ Заглавие */
+/* Заглавие */
 .container > h1 {
     margin-top: 5px;
-    font-size: 2rem;
-    margin-bottom: 15px;
-    color: black;
     font-weight: bold;
+    font-size: 2rem;
+    text-align: left;
+    color: black;
     font-family: "Arial", sans-serif;
+    margin-bottom: 15px;
 }
 
-/* 🏷️ Лейбъли */
+/* Лейбълите (Email, Password, Confirm Password) */
 label {
     display: block;
+    width: 100%;
+    white-space: nowrap;
+    text-align: left;
     font-size: 18px;
-    margin-top: 10px;
     color: black;
     font-family: "Arial", sans-serif;
+    margin-top: 10px;
 }
 
-/* 📝 Полета за въвеждане */
+/* Полета за въвеждане */
 input[type="email"],
 input[type="password"],
 input[type="text"] {
-    width: 100%;
+    background: rgba(255, 255, 255, 0.9); /* Полупрозрачен бял фон */
     padding: 12px;
     height: 45px;
     margin-top: 5px;
     font-size: 16px;
     border-radius: 10px;
     border: 1px solid #ccc;
-    background: rgba(255, 255, 255, 0.9);
+    width: 100%;
     box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.1);
     outline: none;
 }
 
-/* 🔸 Placeholder */
+/* Placeholder стил */
 input::placeholder {
     color: rgba(100, 100, 100, 0.7);
 }
 
-/* 🔘 Бутон */
+/* Бутон за изпращане */
 .btn.submit {
-    margin-top: 20px;
+    margin: 20px auto 0 auto;
     background: #ff9800;
     height: 50px;
     border-radius: 10px;
     color: white;
     font-size: 18px;
+    cursor: pointer;
     font-weight: bold;
     border: none;
-    width: 100%;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    width: 200px;
+    display: block;
+    transition: 0.3s ease-in-out;
 }
 
 .btn.submit:hover {
     background-color: #e68900;
 }
 
-/* 🔁 Линкове */
+/* Линк за превключване между Login и Register */
 .field {
     text-align: left;
     margin-top: 15px;
+    white-space: nowrap;
 }
 
 .field span {
@@ -97,6 +108,7 @@ input::placeholder {
     color: black;
 }
 
+/* Линк за регистрация / вход */
 .field a {
     color: #ff9800;
     font-weight: bold;
@@ -105,30 +117,6 @@ input::placeholder {
 
 .field a:hover {
     text-decoration: underline;
-}
-
-/* 📱 РЕСПОНСИВНОСТ */
-@media screen and (max-width: 1024px) {
-    .auth-container {
-        flex-direction: column;
-        gap: 30px;
-        height: auto;
-        padding-top: 50px;
-    }
-
-    #login-page,
-    #register-page {
-        width: 80%;
-        padding: 30px;
-    }
-
-    .container > h1 {
-        text-align: center;
-    }
-
-    .field {
-        text-align: center;
-    }
 }
 
 @media screen and (max-width: 480px) {

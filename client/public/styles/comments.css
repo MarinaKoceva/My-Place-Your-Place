@@ -1,77 +1,68 @@
-.create-comment > .form > textarea {
-    resize: none;
+.details-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 2rem;
+}
+
+/* 💬 Общ стил за двете секции */
+.comments-section,
+.create-comment {
     width: 100%;
-    height: 6.25rem;
-    margin-top: 1.375rem;
-    margin-bottom: 1.75rem;
-    padding: 0.625rem;
+    max-width: 380px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+}
+
+/* 💬 Comments box */
+.comments-section {
+    background: white;
+    color: #222;
+}
+
+/* ➕ Create comment box */
+.create-comment {
+    background: #f1d18a;
+    text-align: center;
+}
+
+/* Заглавие */
+.create-comment > label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Текстово поле */
+.create-comment .form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 0.75rem;
     border-radius: 0.5rem;
     font-size: 1rem;
+    resize: vertical;
+    border: none;
 }
 
-.details-comments {
-    display: table-cell;
-}
-
-.create-comment {
-    margin-top: 3.75rem;
-    position: relative;
-    text-align: center;
+/* Бутон */
+.create-comment .button {
+    margin-top: 1rem;
+    background-color: orangered;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
     width: 100%;
-    max-width: 43.75rem; /* 700px */
-    border-radius: 1.25rem;
-    padding: 2.5rem;
-    box-sizing: border-box;
-    background: #6f5d9c;
-    box-shadow: 0 0 2rem 0 #32485e, -0.875rem -0.875rem 1.25rem #191c21;
-}
-
-.create-comment > label {
-    color: white;
-    font-size: 1.75rem;
-    text-align: center;
-    font-weight: 700;
-    line-height: normal;
-}
-
-.info-section > .details-comments li {
-    width: 100%;
-    max-width: 25rem; /* 400px */
-    display: inline-block;
-    margin: 1.25rem auto 1.5625rem auto;
-    box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2),
-                0.75rem 0.75rem 1.25rem rgba(0, 0, 0, 0.19);
-    border-radius: 1rem;
-    background: #6f5d9c;
-    color: white;
-}
-
-.comment p {
-    padding: 1rem;
-}
-
-.create-comment > .button:hover {
-    background-color: #41425c;
-    color: white;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-/* 🌐 Респонсив за мобилни устройства */
-@media (max-width: 768px) {
-    .create-comment {
-        padding: 1.5rem;
-        margin-top: 2rem;
-    }
-
-    .create-comment > label {
-        font-size: 1.5rem;
-    }
-
-    .info-section > .details-comments li {
-        margin: 1rem auto;
-    }
-
-    .create-comment > .form > textarea {
-        height: 5rem;
-    }
+.create-comment .button:hover {
+    background-color: #c14000;
 }

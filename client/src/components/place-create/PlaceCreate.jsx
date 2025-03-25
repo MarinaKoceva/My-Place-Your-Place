@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import { useCreatePlace } from '../../api/placeApi';
+import { useCreatePlace } from "../../api/placeApi";
 
 export default function PlaceCreate() {
     const navigate = useNavigate();
@@ -16,136 +16,103 @@ export default function PlaceCreate() {
         size: "",
         rooms: "",
         availability: "",
-        amenities: ""
+        amenities: "",
     });
 
     const [error, setError] = useState(null);
 
     const handleChange = (e) => {
-        const { name, value, type } = e.target;
+        const { name, value } = e.target;
 
         setFormData((prevData) => ({
             ...prevData,
-            [name]: type === "number" ? Number(value) : value.trim(),
+            [name]: value,
         }));
     };
 
-    const submitAction = async (formData) => {
-        const placeData = Object.fromEntries(formData);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-        await createPlace(placeData);
+        // Валидация за задължителни полета
+        if (!formData.title || !formData.category || !formData.address) {
+            setError("Please fill in all required fields.");
+            return;
+        }
 
-        navigate('/places');
+        try {
+            await createPlace(formData);
+            navigate("/places");
+        } catch (err) {
+            setError("Failed to create place.");
+        }
     };
 
     return (
-        <section id="create-page" className="auth">
-            <form id="create" onSubmit={submitAction}>
-                <div className="container">
-                    <h1>Describe your home</h1>
+        <section className="form-container">
+            
+            <form className="form-content" onSubmit={handleSubmit}>
+                <h2>Describe your home</h2>
 
-                    {error && <p className="error">{error}</p>}
+                {error && <p className="error" style={{ color: "red" }}>{error}</p>}
 
-                    <label htmlFor="imageUrl">Image URL:</label>
-                    <input 
-                        type="text" 
-                        id="imageUrl" 
-                        name="imageUrl" 
-                        placeholder="Enter image URL..." 
-                        value={formData.imageUrl} 
-                        onChange={handleChange} 
-                    />
+                {[
+                    { label: "Image URL:", name: "imageUrl", type: "text", placeholder: "Enter image URL..." },
+                    { label: "Title:", name: "title", type: "text", placeholder: "Enter title...", required: true },
+                    {
+                        label: "Category:",
+                        name: "category",
+                        type: "select",
+                        options: ["House", "Apartment", "Villa"],
+                        required: true,
+                    },
+                    { label: "Address:", name: "address", type: "text", placeholder: "Enter address...", required: true },
+                    { label: "Surroundings:", name: "surround", type: "text", placeholder: "What is around?" },
+                    { label: "Tourist sites:", name: "tourists", type: "text", placeholder: "Nearby tourist attractions" },
+                    { label: "Size (m²):", name: "size", type: "number", min: 1 },
+                    { label: "Rooms:", name: "rooms", type: "number", min: 1 },
+                    { label: "Availability:", name: "availability", type: "date" },
+                    { label: "Amenities:", name: "amenities", type: "textarea", placeholder: "List amenities..." },
+                ].map((field, index) => (
+                    <div className="form-row" key={index}>
+                        <label htmlFor={field.name}>{field.label}</label>
 
-                    <label htmlFor="title">Title:</label>
-                    <input 
-                        type="text" 
-                        id="title" 
-                        name="title" 
-                        placeholder="Enter title..." 
-                        value={formData.title} 
-                        onChange={handleChange} 
-                        required
-                    />
+                        {field.type === "select" ? (
+                            <select
+                                id={field.name}
+                                name={field.name}
+                                value={formData[field.name]}
+                                onChange={handleChange}
+                                required={field.required}
+                            >
+                                <option value="">Select category</option>
+                                {field.options.map((opt) => (
+                                    <option key={opt} value={opt}>{opt}</option>
+                                ))}
+                            </select>
+                        ) : field.type === "textarea" ? (
+                            <textarea
+                                id={field.name}
+                                name={field.name}
+                                placeholder={field.placeholder}
+                                value={formData[field.name]}
+                                onChange={handleChange}
+                            />
+                        ) : (
+                            <input
+                                id={field.name}
+                                name={field.name}
+                                type={field.type}
+                                placeholder={field.placeholder}
+                                value={formData[field.name]}
+                                onChange={handleChange}
+                                min={field.min}
+                                required={field.required}
+                            />
+                        )}
+                    </div>
+                ))}
 
-                    <label htmlFor="category">Category:</label>
-                    <select id="category" name="category" value={formData.category} onChange={handleChange} required>
-                        <option value="">Select category</option>
-                        <option value="House">House</option>
-                        <option value="Apartment">Apartment</option>
-                        <option value="Villa">Villa</option>
-                    </select>
-
-                    <label htmlFor="address">Address:</label>
-                    <input 
-                        type="text" 
-                        id="address" 
-                        name="address" 
-                        placeholder="Enter address..." 
-                        value={formData.address} 
-                        onChange={handleChange} 
-                        required
-                    />
-
-                    <label htmlFor="surround">Surroundings:</label>
-                    <input 
-                        type="text" 
-                        id="surround" 
-                        name="surround" 
-                        placeholder="What is around?" 
-                        value={formData.surround} 
-                        onChange={handleChange} 
-                    />
-
-                    <label htmlFor="tourists">Tourist sites:</label>
-                    <input 
-                        type="text" 
-                        id="tourists" 
-                        name="tourists" 
-                        placeholder="Distance from tourist sites" 
-                        value={formData.tourists} 
-                        onChange={handleChange} 
-                    />
-
-                    <label htmlFor="size">Size (m²):</label>
-                    <input 
-                        type="number" 
-                        id="size" 
-                        name="size" 
-                        min="1"
-                        value={formData.size} 
-                        onChange={handleChange} 
-                    />
-
-                    <label htmlFor="rooms">Rooms:</label>
-                    <input 
-                        type="number" 
-                        id="rooms" 
-                        name="rooms" 
-                        min="1"
-                        value={formData.rooms} 
-                        onChange={handleChange} 
-                    />
-
-                    <label htmlFor="availability">Availability:</label>
-                    <input 
-                        type="date" 
-                        id="availability" 
-                        name="availability" 
-                        value={formData.availability} 
-                        onChange={handleChange} 
-                    />
-
-                    <label htmlFor="amenities">Amenities:</label>
-                    <textarea 
-                        id="amenities" 
-                        name="amenities" 
-                        placeholder="List amenities..." 
-                        value={formData.amenities} 
-                        onChange={handleChange} 
-                    ></textarea>
-
-                    <input className="btn submit" type="submit" value="Create Place" />
-                </div>
+                <input className="submit" type="submit" value="Create Place" />
             </form>
         </section>
     );

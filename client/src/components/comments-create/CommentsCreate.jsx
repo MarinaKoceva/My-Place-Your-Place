@@ -1,18 +1,23 @@
 import commentService from "../../services/commentService";
 
-export default function CommentsCreate({ 
-    email, 
-    placeId, 
-    onCreate 
-}) {
+export default function CommentsCreate({ email, placeId, ownerId, onCreate }) {
     const commentAction = async (formData) => {
         const comment = formData.get('comment');
 
-        if (!comment.trim()) return; // Предотвратява празни коментари
+        if (!comment.trim()) return;
 
-        const createdComment = await commentService.create(email, placeId, comment);
-        
-        onCreate(createdComment);
+        // ✅ допълнителна защита, ако ownerId липсва
+        if (!ownerId) {
+            console.error("ownerId is missing – cannot create comment");
+            return;
+        }
+
+        try {
+            const createdComment = await commentService.create(email, placeId, ownerId, comment);
+            onCreate(createdComment);
+        } catch (err) {
+            console.error("Failed to create comment:", err);
+        }
     };
 
     return (

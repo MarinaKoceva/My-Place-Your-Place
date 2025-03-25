@@ -4,115 +4,113 @@
     justify-content: center;
     align-items: flex-start;
     width: 90%;
-    max-width: 1200px;
     margin: auto;
-    padding: 2rem 0;
 }
+
 
 /* Голям контейнер, разделен на две */
 .details-container {
     display: flex;
-    flex-wrap: wrap;
     width: 100%;
     background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.2);
-    gap: 2rem;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    gap: 30px;
 }
 
 /* Лявата част със снимка и детайли (70%) */
 .details-left {
-    flex: 2;
+    width: 70%;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 120px;
 }
 
 /* Снимката */
 .place-image img {
-    width: 100%;
-    max-height: 18.75rem;
-    border-radius: 1rem;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 350px;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    object-fit: contain; /* запазва съотношението */
+    display: block;
+    margin: 0 auto;
 }
 
 /* Информацията */
 .place-info {
     text-align: left;
-    padding: 0.625rem;
+    padding: 10px;
 }
 
 .place-info h1 {
-    font-size: 1.75rem;
-    margin-bottom: 0.625rem;
+    font-size: 28px;
+    margin-bottom: 10px;
 }
 
 /* Бутоните центрирани */
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-top: 1.25rem;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.edit-button,
-.delete-button,
-.comment-btn {
+.edit-button, .delete-button, .comment-btn {
     background: orange;
     color: white;
-    font-size: 1.125rem;
-    padding: 0.625rem 1.25rem;
-    border-radius: 0.625rem;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 10px;
     cursor: pointer;
     text-align: center;
     border: none;
-    transition: background 0.2s ease;
 }
 
 .delete-button {
     background: orangered;
 }
 
-.edit-button:hover,
-.comment-btn:hover {
+.edit-button:hover, .comment-btn {
     background: orangered;
 }
 
 /* Дясната част с коментари (30%) */
 .details-right {
-    flex: 1;
+    width: 30%;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 20px;
 }
 
 /* Секция с коментари */
 .comments-section {
     background: white;
-    padding: 1rem;
-    border-radius: 1rem;
+    padding: 15px;
+    border-radius: 15px;
     text-align: left;
-    box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Контейнер за нов коментар */
 .comment-box {
     background: #f1d18a;
     color: white;
-    padding: 1.25rem;
-    border-radius: 1rem;
+    padding: 20px;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Текстово поле за коментар */
 .comment-input-container textarea {
     width: 100%;
-    min-height: 7.5rem;
-    border-radius: 0.5rem;
-    padding: 0.625rem;
-    font-size: 1rem;
+    min-height: 120px;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
     border: none;
     background: white;
     color: black;

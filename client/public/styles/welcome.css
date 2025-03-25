@@ -1,38 +1,72 @@
-/* 🏠 Основна секция на началната страница */
+/* ОБЩ СТИЛ ЗА HOME СТРАНИЦАТА */
 .welcome-hero {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background: url('../images/home-bg.jpg') no-repeat center center / cover;
-    padding: 2rem 5%;
     position: relative;
-}
-
-/* 📦 Текстов блок */
-.hero-text-right {
-    max-width: 600px;
     width: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 2rem;
-    border-radius: 1rem;
-    color: white;
-    text-align: left;
+    align-items: flex-start;
+    height: 100vh; /* Заема целия екран */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Премества цялото съдържание вдясно */
+    padding-right: 5%; /* Добавя отстъп отдясно */
 }
 
-/* 🧾 Заглавие */
+/* ТЕКСТОВ БЛОК */
+.hero-text-right {
+    position: absolute; /* Позволява свободно местене */
+    top: 10%; /* Премества текста по-нагоре */
+    right: 10%; /* Държи го вдясно */
+    width: 40%;
+    max-width: 600px;
+    text-align: left;
+    color: white;
+    background: rgba(0, 0, 0, 0.4); /* Полупрозрачен фон за четимост */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* ЗАГЛАВИЕ */
 .hero-text-right h2 {
-    font-size: 2.5rem;
+    font-size: 40px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 1rem;
 }
 
-/* 📝 Подтекст */
+/* ТЕКСТ */
 .hero-text-right p {
-    font-size: 1.125rem;
-    line-height: 1.6;
+    font-size: 18px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+/* РЕСПОНСИВЕН ДИЗАЙН */
+@media screen and (max-width: 1024px) {
+    .hero-text-right {
+        width: 50%;
+        max-width: 500px;
+    }
+
+    .hero-text-right h2 {
+        font-size: 32px;
+    }
+
+    .hero-text-right p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .welcome-hero {
+        justify-content: center; /* Центрира текста на малки екрани */
+    }
+
+    .hero-text-right {
+        width: 80%;
+        max-width: 90%;
+        text-align: center;
+        margin-left: 0;
+    }
 }
 
 /* 📱 Респонсив дизайн */

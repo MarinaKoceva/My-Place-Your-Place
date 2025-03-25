@@ -1,5 +1,5 @@
-/* 🌐 Основен фон */
-body {
+/* General Styles */
+body { 
     background-image: url('../images/home.png');
     background-attachment: fixed;
     background-size: cover;
@@ -8,78 +8,136 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* 🔝 Фиксиран header */
+/* Прозрачен, фиксиран header от край до край */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 80px;
-    background-color: rgba(0, 20, 90, 0.3);
+    background-color: rgba(0, 20, 90, 0.3); /* Полупрозрачен фон */
     backdrop-filter: blur(10px);
     padding: 10px 40px;
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Разделя логото и навигацията */
     align-items: center;
 }
-
+/* Напълно прозрачен хедър */
 header.transparent {
     background-color: rgba(0, 0, 0, 0);
 }
 
-/* 🔠 Лого */
+/* ЛОГО - Бяло и подравнено вляво */
 header h1 {
     font-size: 24px;
     font-weight: bold;
     margin: 0;
-    white-space: nowrap;
+    white-space: nowrap; /* Предотвратява пренасяне на нов ред */
 }
 
 header h1 a {
-    color: white !important;
+    color: white !important; /* Принудително бяло */
     text-decoration: none;
     font-weight: bold;
 }
 
-/* 🔗 Навигация */
+/* НАВИГАЦИЯ - ВДЯСНО */
 header nav {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    flex-grow: 1;
+    justify-content: flex-end; /* Избутва навигацията вдясно */
+    flex-grow: 1; /* Заема цялото възможно пространство */
+    gap: 15px; /* Разстояние между линковете */
+}
+
+#user, #guest {
+    display: flex;
+    align-items: center; /* Гарантира, че са в една линия */
     gap: 15px;
 }
 
-#user,
-#guest,
 .nav-links {
     display: flex;
-    align-items: center;
+    align-items: center; /* Подравнява всички елементи на едно ниво */
     gap: 15px;
 }
 
-nav a,
 .nav-links .logout {
+    color: white !important;  /* Бял цвят */
+    cursor: pointer; /* Прави го кликваем */
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.nav-links .logout:hover {
+    color: #ff9800; /* Променя цвета при hover */
+}
+
+/* ЛИНКОВЕ В НАВИГАЦИЯТА */
+nav a {
     color: white;
     font-size: 16px;
     font-weight: bold;
-    padding: 12px 18px;
+    padding: 12px 18px; /* Равномерни бутони */
     border-radius: 5px;
-    text-decoration: none;
+    transition: color 0.3s, background 0.3s;
     text-align: center;
     display: inline-block;
-    transition: color 0.3s, background 0.3s;
 }
 
-.nav-links .logout:hover,
+/* ХОВЪР ЕФЕКТ */
 nav a:hover {
     color: orange;
     background: rgba(255, 255, 255, 0.2);
 }
 
+/* Допълнителни стилове */
+.auth {
+    width: 100px;
+    margin: 8em auto;
+}
+
+/* Подравняване на основното съдържание, за да не бъде закрито от хедъра */
 main {
-    margin-top: 90px;
+    margin-top: 90px; /* Колкото е височината на хедъра */
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    header {
+        height: 60px;
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    nav a {
+        padding: 8px 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+        padding: 15px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
 /* 📱 Респонсив дизайн */

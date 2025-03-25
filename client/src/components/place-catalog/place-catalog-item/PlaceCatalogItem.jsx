@@ -6,15 +6,34 @@ export default function PlaceCatalogItem({
     category,
     imageUrl,
     address,
+    showActions = false,
+    onDelete
 }) {
     return (
-        <Link to={`/places/${_id}/details`} className="place-card">
-            <div className="place-content">
-                <img src={imageUrl} alt={title} className="place-image" />
-                <h2>{title}</h2>
-                <p className="category">{category}</p>
-                <p className="address">{address}</p>
-            </div>
-        </Link>
+        <div className="place-wrapper">
+            {/* Цялата карта е линк към детайлите */}
+            <Link 
+                to={`/places/${_id}/details`} 
+                className="place-card-link" 
+                style={{ textDecoration: "none", color: "inherit" }}
+            >
+                <div className="place-card">
+                    <div className="place-content">
+                        <img src={imageUrl} alt={title} className="place-image" />
+                        <h2>{title}</h2>
+                        <p className="category">{category}</p>
+                        <p className="address">{address}</p>
+                    </div>
+                </div>
+            </Link>
+
+            {/* Бутоните извън линка */}
+            {showActions && (
+                <div className="place-actions">
+                    <Link to={`/places/${_id}/edit`} className="btn edit">Edit</Link>
+                    <button onClick={() => onDelete(_id)} className="btn delete">Delete</button>
+                </div>
+            )}
+        </div>
     );
 }

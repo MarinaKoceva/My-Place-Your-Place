@@ -6,13 +6,24 @@ export default {
     async getAll(placeId) {
         const comments = await request.get(baseUrl);
 
-        // TODO: filter when migrate to collections
-        // Client filtering (dont do this)
         const placeComments = Object.values(comments).filter(comment => comment.placeId === placeId);
 
-        return placeComments;
+        return Object.values(comments).filter(comment => comment.placeId === placeId);
     },
-    create(email, placeId, comment) {
-        return request.post(baseUrl, { email, placeId, comment });
+    create(email, placeId, ownerId, comment) {
+        return request.post(baseUrl, { email, placeId, ownerId, comment });
+    },
+    getAllByOwner(ownerId) {
+        return request.get(baseUrl)
+            .then(comments =>
+                Object.values(comments).filter(comment => comment.ownerId === ownerId)
+            );
+    },
+    reply(commentId, replyText, originalComment) {
+        return request.put(`${baseUrl}/${commentId}`, {
+            ...originalComment,
+            reply: replyText
+        });
     }
+    
 };

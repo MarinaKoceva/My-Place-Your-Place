@@ -41,10 +41,10 @@ function App() {
 
     return (
         <UserContext.Provider value={{ ...authData, userLoginHandler, userLogoutHandler }}>
-            <div id="box">
+            <div id="page-layout">
                 <Header />
 
-                <main id="main-content">
+                <main id="main-wrapper">
                     <Routes>
                         <Route index element={<Home />} />
                         <Route path="/places" element={<PlaceCatalog />} />
@@ -54,7 +54,7 @@ function App() {
                         <Route path="/places/:placeId/edit" element={<PlaceEdit />} />
 
                         <Route path="/howItWorks" element={<HowItWorks />} />
-                        <Route path="/profile" element={<Profile email={authData.email} birthdate={authData.birthdate} />} />
+                        <Route path="/profile" element={<Profile _id={authData._id} email={authData.email} birthdate={authData.birthdate} onLogout={userLogoutHandler}/>} />
                         <Route path="/profile/edit" element={<EditProfile email={authData.email} onUpdateBirthdate={handleUpdateBirthdate} />} />
                         <Route path="/login" element={<Login onLogin={userLoginHandler} />} />
                         <Route path="/register" element={<Register />} />

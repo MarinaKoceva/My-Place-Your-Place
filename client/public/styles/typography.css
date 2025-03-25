@@ -1,81 +1,97 @@
-/* 🔤 Основна типография и box-sizing */
 html {
-    font-family: 'Arial', sans-serif;
-    font-size: 100%; /* = 16px по подразбиране */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
     box-sizing: border-box;
-    scroll-behavior: smooth;
 }
 
-*, *::before, *::after {
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.page-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+.main-wrapper {
+    flex: 1;
+    padding-bottom: 120px; /* важно: оставя място под съдържанието за футера */
+}
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
-    line-height: 1.5;
+    line-height: 1.3;
 }
 
-/* 🧾 Заглавия */
-h1, h2, h3, h4, h5, h6 {
-    padding: 0.5rem 1rem;
-    line-height: 1.2;
+#box {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-/* 📄 Параграфи и дивове */
-p, div {
-    margin: 0 1rem 1rem 1rem;
-    font-size: 1rem;
+#main-content {
+    flex-grow: 1;
 }
 
-/* 📑 Списъци */
-ol, ul {
-    margin: 0 1rem;
-    padding-left: 1rem;
+#root {
+    min-height: 100%;
+}
+
+h1,
+h2,
+h4,
+h5,
+h6 {
+    padding: 0.2em 1rem;
+}
+
+p,
+div {
+    margin: 0 1em 0.5em 1em;
+}
+
+ol,
+ul {
+    margin: 0em 1rem;
 }
 
 li {
     list-style-position: inside;
-    font-size: 1rem;
 }
 
-/* 🔘 Бутони */
 button {
     font-weight: bold;
-    padding: 0.5rem 1rem;
-    margin: 0.4rem 0;
+    padding: 0.2em;
+    margin: 0.2em;
     border: 1px solid white;
-    border-radius: 0.5rem;
+    border-radius: 0.3em;
     background-color: transparent;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-button:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* 🔗 Линкове */
 a {
+    margin: 0.2em;
     text-decoration: none;
     font-weight: bold;
     color: inherit;
-    transition: color 0.3s;
 }
 
-a:hover {
-    color: orange;
-}
-
-/* 📝 Цитати */
 blockquote {
     font-style: italic;
-    margin: 1rem;
-    font-size: 1rem;
+    margin: 0.5em;
 }
 
-blockquote > cite {
+blockquote>cite {
     display: block;
     text-align: right;
-    margin-top: 0.5rem;
+    margin: 0.5em 2em;
     font-weight: bold;
-    font-style: normal;
 }

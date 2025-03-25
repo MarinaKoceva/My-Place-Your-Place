@@ -77,3 +77,19 @@ export const useDeletePlace = () => {
         deletePlace,
     }
 };
+
+export const useUserPlaces = (userId) => {
+    const [places, setPlaces] = useState([]);
+
+    useEffect(() => {
+        if (!userId) return;
+
+        request.get('http://localhost:3030/data/places') // или твоя URL
+            .then(data => {
+                const userPlaces = Object.values(data).filter(p => p._ownerId === userId);
+                setPlaces(userPlaces);
+            });
+    }, [userId]);
+
+    return { places };
+};

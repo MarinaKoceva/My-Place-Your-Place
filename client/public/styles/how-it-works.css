@@ -1,82 +1,90 @@
-/* 🧩 ГЛАВНА СЕКЦИЯ */
+/* ГЛАВНА СЕКЦИЯ */
 .works {
     width: 100%;
     padding: 50px 5%;
     text-align: center;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px); /* Лек размазващ ефект */
+    position: flex;
 }
 
-/* 🔠 ЗАГЛАВИЕТО НА СЕКЦИЯТА */
+/* ЗАГЛАВИЕТО НА СЕКЦИЯТА */
 .section-header {
+    text-align: center;
     margin-bottom: 30px;
 }
 
 .section-header h2 {
-    font-size: 2rem;
+    font-size: 32px;
+    text-transform: initial;
     font-weight: bold;
     margin-bottom: 10px;
     color: white;
 }
 
 .section-header p {
-    font-size: 1.2rem;
+    font-size: 22px;
     color: white;
     max-width: 60%;
     margin: 0 auto;
 }
 
-/* 📐 ГРИД - ДВЕ КОЛОНИ */
+/* ГЛАВЕН ГРИД - 2 КОЛОНИ */
 .works-content {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr; /* Две равни колони */
     gap: 30px;
     align-items: start;
 }
 
-/* 📦 ЕДИН ЕЛЕМЕНТ */
+/* ЕДИН СЕКЦИОНЕН БЛОК */
 .single-how-works {
     text-align: center;
 }
 
 .single-how-works img {
-    width: 100%;
-    max-width: 300px;
+    width: 60%;
     height: auto;
     border-radius: 10px;
 }
 
-/* 📄 ТЕКСТ ПОД СНИМКИТЕ */
+/* ТЕКСТ ПОД СНИМКИТЕ – ЕДНАКВИ КОНТЕЙНЕРИ */
 .text-below {
     padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 180px;
+    justify-content: space-between; /* Гарантира, че бутонът остава в долната част */
+    min-height: 180px; /* Фиксирана минимална височина за равни контейнери – коригирай според нуждите */
 }
 
+/* Заглавието на картата – ще бъде бяло */
 .text-below h2 {
-    font-size: 1.5rem;
+    font-size: 26px;
     font-weight: bold;
     margin-bottom: 10px;
     color: white;
 }
 
+/* Основният текст */
 .text-below p {
-    font-size: 1rem;
+    font-size: 16px;
     color: whitesmoke;
     margin-bottom: 10px;
 }
 
-/* 🟠 БУТОНИ */
+.works-button-wrapper {
+    margin-top: 30px;
+    text-align: center;
+}
+
 .how-work-btn {
-    padding: 10px 20px;
+    padding: 8px 18px;
+    font-size: 13px;
     background: orange;
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    align-self: center;
+    text-decoration: none; /* важно за <Link> */
+    display: inline-block;
     transition: background 0.3s;
 }
 
@@ -84,10 +92,11 @@
     background: orangered;
 }
 
-/* 📱 РЕСПОНСИВЕН ДИЗАЙН */
+
+/* РЕСПОНСИВЕН ДИЗАЙН */
 @media screen and (max-width: 1024px) {
     .works-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Една колона на по-малки екрани */
     }
 }
 
