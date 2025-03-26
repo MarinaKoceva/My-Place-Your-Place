@@ -31,6 +31,7 @@ node server.js
 
 ## The app runs at:
 http://localhost:5173 (Frontend)
+
 http://localhost:3030 (Backend)
 
 
