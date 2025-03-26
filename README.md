@@ -20,7 +20,6 @@ The idea behind the project is sustainable and community-oriented – to travel 
 
 ### Client (Frontend)
 
-```bash
 cd client
 npm install
 npm run dev
@@ -28,7 +27,7 @@ npm run dev
 ### Server (Backend)
 
 cd server
-node server.js The app runs at:
+node server.js
 
 ## The app runs at:
 http://localhost:5173 (Frontend)
@@ -47,7 +46,8 @@ Clicking on a place opens its details page.
 All users can view places, but only logged-in users can create them.
 If a user is the owner of a place, they can edit or delete it at any time.
 This management is also accessible through the “Profile” page, where users can also view and respond to messages related to their listings.
+
 # Homepage
 
-![ScreenshotHomePage](…)
+![homepage](https://github.com/user-attachments/assets/db2bd4c8-c900-41c5-94e1-c8f803428b8b)
 
