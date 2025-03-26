@@ -37,10 +37,10 @@ export default function Profile({ _id, email, birthdate, onLogout }) {
         e.preventDefault();
         const reply = e.target.reply.value.trim();
         if (!reply) return;
-    
+
         await commentService.reply(commentId, reply, originalComment);
         e.target.reset();
-    
+
         // обнови всички коментари
         const updatedComments = {};
         for (let place of places) {
@@ -101,7 +101,7 @@ export default function Profile({ _id, email, birthdate, onLogout }) {
                             <PlaceCatalogItem
                                 key={place._id}
                                 {...place}
-                                showActions={true}
+                                showActions={false}
                                 onDelete={handleDelete}
                             />
                         ))
@@ -112,15 +112,15 @@ export default function Profile({ _id, email, birthdate, onLogout }) {
 
                 {/* Log Out бутон вътре в profile-card */}
                 <div className="profile-buttons">
-                <button
-    onClick={() => {
-        onLogout();         // изчистване на auth
-        navigate("/");      // пренасочване към home
-    }}
-    className="btn logout-btn"
->
-    Log Out
-</button>
+                    <button
+                        onClick={() => {
+                            onLogout();         // изчистване на auth
+                            navigate("/");      // пренасочване към home
+                        }}
+                        className="btn logout-btn"
+                    >
+                        Log Out
+                    </button>
                 </div>
             </section>
         </div>

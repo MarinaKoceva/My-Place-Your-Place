@@ -33,9 +33,14 @@ export default function PlaceCreate() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Валидация за задължителни полета
+        // Простa валидация
         if (!formData.title || !formData.category || !formData.address) {
-            setError("Please fill in all required fields.");
+            setError("Please fill in Title, Category and Address.");
+            return;
+        }
+
+        if (formData.title.length < 3) {
+            setError("Title must be at least 3 characters.");
             return;
         }
 
@@ -49,11 +54,10 @@ export default function PlaceCreate() {
 
     return (
         <section className="form-container">
-            
             <form className="form-content" onSubmit={handleSubmit}>
                 <h2>Describe your home</h2>
 
-                {error && <p className="error" style={{ color: "red" }}>{error}</p>}
+                {error && <p className="form-error">{error}</p>}
 
                 {[
                     { label: "Image URL:", name: "imageUrl", type: "text", placeholder: "Enter image URL..." },
@@ -66,8 +70,24 @@ export default function PlaceCreate() {
                         required: true,
                     },
                     { label: "Address:", name: "address", type: "text", placeholder: "Enter address...", required: true },
-                    { label: "Surroundings:", name: "surround", type: "text", placeholder: "What is around?" },
-                    { label: "Tourist sites:", name: "tourists", type: "text", placeholder: "Nearby tourist attractions" },
+                    {
+                        label: "Surroundings:",
+                        name: "surround",
+                        type: "select",
+                        options: ["Countryside", "Mountain", "Coastal", "Lake", "City", "Village", "Isolated", "Island", "River"]
+                    },
+                    {
+                        label: "Tourist sites:",
+                        name: "tourists",
+                        type: "select",
+                        options: [
+                            "In the heart of a world-famous area",
+                            "Less than 30-minutes from a world-famous area",
+                            "Less than 30-minutes from a lesser-known tourist site",
+                            "Less than 30-minutes from sites that only the locals know about",
+                            "Remote: more than 30-minutes from any tourist sites"
+                        ]
+                    },
                     { label: "Size (m²):", name: "size", type: "number", min: 1 },
                     { label: "Rooms:", name: "rooms", type: "number", min: 1 },
                     { label: "Availability:", name: "availability", type: "date" },

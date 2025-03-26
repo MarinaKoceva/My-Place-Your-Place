@@ -58,32 +58,34 @@ export default function PlaceDetails() {
                     </div>
 
                     {isOwner && (
-                        <div className="buttons">
-                            <Link to={`/places/${placeId}/edit`} className="edit-button">Edit</Link>
-                            <button onClick={placeDeleteClickHandler} className="delete-button">Delete</button>
+                        <div className="buttons-wrapper">
+                            <div className="buttons">
+                                <Link to={`/places/${placeId}/edit`} className="edit-button">Edit</Link>
+                                <button onClick={placeDeleteClickHandler} className="delete-button">Delete</button>
+                            </div>
                         </div>
                     )}
                 </div>
 
                 {/* Дясната част с коментарите – показваме само ако е логнат потребител */}
-{userId && (
-    <div className="details-right">
-        <div className="comments-section">
-            <CommentsShow comments={comments} />
-        </div>
+                {userId && (
+                    <div className="details-right">
+                        <div className="comments-section">
+                            <CommentsShow comments={comments} />
+                        </div>
 
-        {!isOwner && (
-            <div className="comment-input-container">
-                <CommentsCreate
-                    email={email}
-                    placeId={placeId}
-                    ownerId={place._ownerId}
-                    onCreate={commentCreateHandler}
-                />
-            </div>
-        )}
-    </div>
-)}
+                        {!isOwner && (
+                            <div className="comment-input-container">
+                                <CommentsCreate
+                                    email={email}
+                                    placeId={placeId}
+                                    ownerId={place._ownerId}
+                                    onCreate={commentCreateHandler}
+                                />
+                            </div>
+                        )}
+                    </div>
+                )}
 
             </div>
         </section>

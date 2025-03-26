@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { useRegister } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router";
@@ -6,27 +6,39 @@ import { useNavigate } from "react-router";
 export default function Register() {
     const navigate = useNavigate();
     const { register } = useRegister();
-    const { userLoginHandler } = useContext(UserContext)
+    const { userLoginHandler } = useContext(UserContext);
+
+    const [error, setError] = useState("");
 
     const registerHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-
         const { email, password } = Object.fromEntries(formData);
-
         const confirmPassword = formData.get('confirmPassword');
 
-        if (password !== confirmPassword) {
-            console.log('Password missmatch');
-
+        // Валидация
+        if (!email || !password || !confirmPassword) {
+            setError("All fields are required.");
             return;
         }
 
-        const authData = await register(email, password);
+        if (password.length < 6) {
+            setError("Password must be at least 6 characters.");
+            return;
+        }
 
-        userLoginHandler(authData);
+        if (password !== confirmPassword) {
+            setError("Passwords do not match.");
+            return;
+        }
 
-        navigate("/");
+        try {
+            const authData = await register(email, password);
+            userLoginHandler(authData);
+            navigate("/");
+        } catch (err) {
+            setError("Registration failed. Try again.");
+        }
     };
 
     return (
@@ -35,6 +47,10 @@ export default function Register() {
                 <form id="register" onSubmit={registerHandler}>
                     <div className="container">
                         <h1>Register</h1>
+
+                        {/* Съобщение за грешка */}
+                        {error && <p className="auth-error">{error}</p>}
+
                         <label htmlFor="email">Email:</label>
                         <input type="email" id="email" name="email" placeholder="maria@abv.bg" />
 
@@ -45,7 +61,6 @@ export default function Register() {
                         <input type="password" name="confirmPassword" id="confirmPassword" />
 
                         <input className="btn submit" type="submit" value="Register" />
-
                     </div>
                 </form>
             </section>

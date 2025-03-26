@@ -32,6 +32,13 @@
     text-align: left; /* Ляво подравняване на съдържанието */
 }
 
+.auth-error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 /* Заглавие */
 .container > h1 {
     margin-top: 5px;

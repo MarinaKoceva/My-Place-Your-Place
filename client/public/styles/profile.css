@@ -192,7 +192,7 @@
 
 .comment-owner button[type="submit"] {
     padding: 0.5rem 1rem;
-    background: #007bff;
+    background: orange;
     color: white;
     border: none;
     border-radius: 6px;
@@ -202,7 +202,7 @@
 }
 
 .comment-owner button[type="submit"]:hover {
-    background: #005dc1;
+    background: orangered;
 }
 
 
