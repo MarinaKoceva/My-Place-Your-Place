@@ -43,7 +43,15 @@ export default function PlaceDetails() {
             <div className="details-container">
                 <div className="details-left">
                     <div className="place-image">
-                        <img src={place.imageUrl} alt={place.title} />
+                        <img
+                            src={place.imageUrl || "/images/placeholder.jpg"}
+                            alt={place.title}
+                            className="place-image"
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "/images/placeholder.jpg";
+                            }}
+                        />
                     </div>
                     <div className="place-info">
                         <h1>{place.title}</h1>

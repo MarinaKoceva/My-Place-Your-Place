@@ -66,7 +66,9 @@ export default function PlaceCreate() {
                         label: "Category:",
                         name: "category",
                         type: "select",
-                        options: ["House", "Apartment", "Villa"],
+                        options: [
+                            "House", "Apartment", "Villa"
+                        ],
                         required: true,
                     },
                     { label: "Address:", name: "address", type: "text", placeholder: "Enter address...", required: true },

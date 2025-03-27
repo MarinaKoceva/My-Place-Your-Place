@@ -12,14 +12,22 @@ export default function PlaceCatalogItem({
     return (
         <div className="place-wrapper">
             {/* Цялата карта е линк към детайлите */}
-            <Link 
-                to={`/places/${_id}/details`} 
-                className="place-card-link" 
+            <Link
+                to={`/places/${_id}/details`}
+                className="place-card-link"
                 style={{ textDecoration: "none", color: "inherit" }}
             >
                 <div className="place-card">
                     <div className="place-content">
-                        <img src={imageUrl} alt={title} className="place-image" />
+                        <img
+                            src={imageUrl || "/images/placeholder.jpg"}
+                            alt={title}
+                            className="place-image"
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "/images/placeholder.jpg";
+                            }}
+                        />
                         <h2>{title}</h2>
                         <p className="category">{category}</p>
                         <p className="address">{address}</p>

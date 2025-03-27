@@ -3,18 +3,22 @@
     justify-content: center;
     align-items: center;
     padding-top: 10px;
-    height: 100vh;
+    min-height: 100vh; /* ✅ Позволява растеж, без да реже */
+    padding-top: 40px; /* малко място под хедъра */
+    padding-bottom: 40px; /* допълнително отдолу */
     background: url("../images/background.jpg") no-repeat center center/cover;
-    
+    backdrop-filter: blur(8px);
 }
 
 /* --- Основен контейнер --- */
 .profile-card {
     width: 1000px; /* Подходящ размер */
-    height: flex; /* Достатъчно място */
+    max-height: 90vh;
+    height: auto; /* Достатъчно място */
     background: white;
     border-radius: 25px;
     margin-top: 1px;
+    overflow-y: auto;
     padding: 50px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     display: flex;
