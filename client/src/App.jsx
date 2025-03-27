@@ -21,6 +21,7 @@ import './App.css';
 import Logout from './components/logout/Logout'
 import PrivateRoute from './guards/PrivateRoute';
 import GuestRoute from './guards/GuestRoute';
+import NotFound from './components/not-found/NotFound';
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
                         <Route path="/login" element={<Login onLogin={userLoginHandler} />} />
                         <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
                         <Route path="/logout" element={<Logout />} />
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>
 
