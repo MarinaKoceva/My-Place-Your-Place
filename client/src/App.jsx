@@ -25,21 +25,35 @@ import NotFound from './components/not-found/NotFound';
 
 function App() {
     const [authData, setAuthData] = useState({});
-
-    const [profileInfo, setProfileInfo] = useState(() => {
-        const saved = localStorage.getItem("profileInfo");
-        return saved
-            ? JSON.parse(saved)
-            : {
-                fullName: "Guest User",
-                profilePicUrl: "/images/profil-pic1.gif",
-                gender: "",
-                bio: "",
-                notificationsEnabled: false,
-                preferredLanguage: "",
-                birthdate: { day: "", month: "", year: "" },
-            };
+    const [profileInfo, setProfileInfo] = useState({
+        fullName: "Guest User",
+        profilePicUrl: "/images/profil-pic1.gif",
+        gender: "",
+        bio: "",
+        notificationsEnabled: false,
+        preferredLanguage: "",
+        birthdate: { day: "", month: "", year: "" },
     });
+
+    // 🟢 Зареждане на визитката при смяна на user
+    useEffect(() => {
+        if (authData._id) {
+            const saved = localStorage.getItem(`profileInfo_${authData._id}`);
+            if (saved) {
+                setProfileInfo(JSON.parse(saved));
+            } else {
+                setProfileInfo({
+                    fullName: "",
+                    profilePicUrl: "",
+                    gender: "",
+                    bio: "",
+                    notificationsEnabled: false,
+                    preferredLanguage: "",
+                    birthdate: { day: "", month: "", year: "" },
+                });
+            }
+        }
+    }, [authData._id]);
 
     const userLoginHandler = (resultData) => {
         setAuthData({ ...resultData });
@@ -47,12 +61,22 @@ function App() {
 
     const userLogoutHandler = () => {
         setAuthData({});
-        // localStorage.removeItem("profileInfo"); // ако искаш да се чисти
+        setProfileInfo({
+            fullName: "Guest User",
+            profilePicUrl: "/images/profil-pic1.gif",
+            gender: "",
+            bio: "",
+            notificationsEnabled: false,
+            preferredLanguage: "",
+            birthdate: { day: "", month: "", year: "" },
+        });
     };
 
     const handleProfileUpdate = (newProfileData) => {
         setProfileInfo(newProfileData);
-        localStorage.setItem("profileInfo", JSON.stringify(newProfileData));
+        if (authData._id) {
+            localStorage.setItem(`profileInfo_${authData._id}`, JSON.stringify(newProfileData));
+        }
     };
 
     return (
@@ -71,7 +95,8 @@ function App() {
 
                         <Route path="/howItWorks" element={<HowItWorks />} />
 
-                        <Route path="/profile"
+                        <Route
+                            path="/profile"
                             element={
                                 <PrivateRoute>
                                     <Profile
@@ -88,7 +113,7 @@ function App() {
                             element={
                                 <EditProfile
                                     onUpdateProfile={handleProfileUpdate}
-                                    profileData={profileInfo} // 🟢 добавено
+                                    profileData={profileInfo}
                                 />
                             }
                         />

@@ -66,9 +66,9 @@ export default function EditProfile({ onUpdateProfile, profileData }) {
                     <label>Gender:</label>
                     <select name="gender" value={formState.gender} onChange={handleChange}>
                         <option value="">Select</option>
-                        <option value="Мъж">Man</option>
-                        <option value="Жена">Woman</option>
-                        <option value="Друго">Other</option>
+                        <option value="Men">Man</option>
+                        <option value="Women">Woman</option>
+                        <option value="Other">Other</option>
                     </select>
 
                     <label>Life Motto:</label>
@@ -78,19 +78,6 @@ export default function EditProfile({ onUpdateProfile, profileData }) {
                         onChange={handleChange}
                         placeholder="Enter your life motto..."
                     />
-
-                    {/* 🔔 TOGGLE SWITCH ЗА NOTIFICATIONS */}
-                    <label>Receive Notifications:</label>
-                    <div className="switch">
-                        <input
-                            type="checkbox"
-                            name="notificationsEnabled"
-                            id="notificationsEnabled"
-                            checked={formState.notificationsEnabled}
-                            onChange={handleChange}
-                        />
-                        <span className="slider"></span>
-                    </div>
 
                     <label>Preferred Language:</label>
                     <select

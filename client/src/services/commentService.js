@@ -19,11 +19,20 @@ export default {
                 Object.values(comments).filter(comment => comment.ownerId === ownerId)
             );
     },
+    getAllByEmail(email) {
+        return request.get(baseUrl)
+            .then(comments =>
+                Object.values(comments).filter(comment => comment.email === email)
+            );
+    },
     reply(commentId, replyText, originalComment) {
         return request.put(`${baseUrl}/${commentId}`, {
             ...originalComment,
             reply: replyText
         });
+    },
+    delete(commentId) {
+        return request.delete(`${baseUrl}/${commentId}`);
     }
     
 };
