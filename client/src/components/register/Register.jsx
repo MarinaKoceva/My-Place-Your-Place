@@ -35,6 +35,7 @@ export default function Register() {
         try {
             const authData = await register(email, password);
             userLoginHandler(authData);
+            
             navigate("/");
         } catch (err) {
             setError("Registration failed. Try again.");

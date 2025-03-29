@@ -6,7 +6,7 @@ export default function CommentsCreate({ email, placeId, ownerId, onCreate }) {
 
         if (!comment.trim()) return;
 
-        // ✅ допълнителна защита, ако ownerId липсва
+        // допълнителна защита, ако ownerId липсва
         if (!ownerId) {
             console.error("ownerId is missing – cannot create comment");
             return;

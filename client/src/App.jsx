@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router';
 
-import { UserContext } from './contexts/UserContext'
+import { UserContext } from './contexts/UserContext';
 
 import "../public/styles/style.css";
 
@@ -18,28 +18,41 @@ import Profile from './components/profile/Profile';
 import EditProfile from './components/profile/EditProfile';
 import Footer from './components/footer/Footer';
 import './App.css';
-import Logout from './components/logout/Logout'
+import Logout from './components/logout/Logout';
 import PrivateRoute from './guards/PrivateRoute';
 import GuestRoute from './guards/GuestRoute';
 import NotFound from './components/not-found/NotFound';
 
-
 function App() {
     const [authData, setAuthData] = useState({});
 
+    const [profileInfo, setProfileInfo] = useState(() => {
+        const saved = localStorage.getItem("profileInfo");
+        return saved
+            ? JSON.parse(saved)
+            : {
+                fullName: "Guest User",
+                profilePicUrl: "/images/profil-pic1.gif",
+                gender: "",
+                bio: "",
+                notificationsEnabled: false,
+                preferredLanguage: "",
+                birthdate: { day: "", month: "", year: "" },
+            };
+    });
+
     const userLoginHandler = (resultData) => {
-        setAuthData({ ...resultData, birthdate: resultData.birthdate || '' });
+        setAuthData({ ...resultData });
     };
 
     const userLogoutHandler = () => {
         setAuthData({});
+        // localStorage.removeItem("profileInfo"); // ако искаш да се чисти
     };
 
-    const handleUpdateBirthdate = (newBirthdate) => {
-        setAuthData((prevAuthData) => ({
-            ...prevAuthData,
-            birthdate: newBirthdate
-        }));
+    const handleProfileUpdate = (newProfileData) => {
+        setProfileInfo(newProfileData);
+        localStorage.setItem("profileInfo", JSON.stringify(newProfileData));
     };
 
     return (
@@ -57,8 +70,29 @@ function App() {
                         <Route path="/places/:placeId/edit" element={<PrivateRoute><PlaceEdit /></PrivateRoute>} />
 
                         <Route path="/howItWorks" element={<HowItWorks />} />
-                        <Route path="/profile" element={<PrivateRoute><Profile _id={authData._id} email={authData.email} birthdate={authData.birthdate} onLogout={userLogoutHandler} /></PrivateRoute>} />
-                        <Route path="/profile/edit" element={<EditProfile email={authData.email} onUpdateBirthdate={handleUpdateBirthdate} />} />
+
+                        <Route path="/profile"
+                            element={
+                                <PrivateRoute>
+                                    <Profile
+                                        _id={authData._id}
+                                        onLogout={userLogoutHandler}
+                                        {...profileInfo}
+                                    />
+                                </PrivateRoute>
+                            }
+                        />
+
+                        <Route
+                            path="/profile/edit"
+                            element={
+                                <EditProfile
+                                    onUpdateProfile={handleProfileUpdate}
+                                    profileData={profileInfo} // 🟢 добавено
+                                />
+                            }
+                        />
+
                         <Route path="/login" element={<Login onLogin={userLoginHandler} />} />
                         <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
                         <Route path="/logout" element={<Logout />} />
@@ -68,7 +102,6 @@ function App() {
 
                 <Footer />
             </div>
-
         </UserContext.Provider>
     );
 }

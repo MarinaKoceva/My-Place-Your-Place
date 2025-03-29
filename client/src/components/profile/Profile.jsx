@@ -5,7 +5,17 @@ import { useEffect, useState } from "react";
 import { useComments } from "../../api/commentApi";
 import commentService from "../../services/commentService"; // за reply()
 
-export default function Profile({ _id, email, birthdate, onLogout }) {
+export default function Profile({
+    _id,
+    onLogout,
+    fullName,
+    profilePicUrl,
+    gender,
+    bio,
+    notificationsEnabled,
+    preferredLanguage,
+    birthdate
+}) {
     const navigate = useNavigate();
     const { places, refetch } = useUserPlaces(_id);
     const { deletePlace } = useDeletePlace();
@@ -13,18 +23,16 @@ export default function Profile({ _id, email, birthdate, onLogout }) {
 
     const handleDelete = async (placeId) => {
         await deletePlace(placeId);
-        refetch(); // за да обновим след изтриване
+        refetch();
     };
 
     useEffect(() => {
         const fetchComments = async () => {
             const allComments = {};
-
             for (let place of places) {
                 const comments = await commentService.getAll(place._id);
                 allComments[place._id] = comments;
             }
-
             setCommentsByPlace(allComments);
         };
 
@@ -41,7 +49,6 @@ export default function Profile({ _id, email, birthdate, onLogout }) {
         await commentService.reply(commentId, reply, originalComment);
         e.target.reset();
 
-        // обнови всички коментари
         const updatedComments = {};
         for (let place of places) {
             const comments = await commentService.getAll(place._id);
@@ -50,26 +57,31 @@ export default function Profile({ _id, email, birthdate, onLogout }) {
         setCommentsByPlace(updatedComments);
     };
 
+
     return (
         <div className="profile-container">
             <section className="profile-card">
-                {/* Хедър */}
                 <div className="profile-header">
                     <img
-                        src="/images/profil-pic1.gif"
+                        src={profilePicUrl || "/images/profil-pic1.gif"}
                         alt="Profile"
                         className="profile-image"
                         onError={(e) => (e.target.src = "/images/default-avatar.png")}
                     />
-                    <div className="profile-info">
-                        <h2>{email}</h2>
-                        {birthdate?.day && birthdate?.month && birthdate?.year && (
-                            <p className="profile-birthday">
-                                🎂 {birthdate.day} {birthdate.month} {birthdate.year}
-                            </p>
+
+                    <div className="profile-info-card">
+                        <h2>{fullName || "Guest User"}</h2>
+
+                        {birthdate?.day && (
+                            <p>🎂 <strong>{birthdate.day} {birthdate.month} {birthdate.year}</strong></p>
                         )}
+                        {gender && <p>🧍 Gender: <strong>{gender}</strong></p>}
+                        {preferredLanguage && <p>🌐 Language: <strong>{preferredLanguage}</strong></p>}
+                        <p>🔔 Notifications: <strong>{notificationsEnabled ? "Enabled" : "Disabled"}</strong></p>
+                        {bio && <p className="profile-bio">“{bio}”</p>}
                     </div>
-                    <button onClick={() => navigate("/profile/edit")} className="edit-btn">✏️</button>
+
+                    <button onClick={() => navigate("/profile/edit")} className="edit-btn">Edit Card</button>
                 </div>
 
                 {/* Обявите вътре в profile-card */}

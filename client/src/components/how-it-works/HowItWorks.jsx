@@ -43,7 +43,6 @@ export default function HowItWorks() {
           </div>
         </div>
 
-        {/* БУТОНЪТ – извън грид контейнера */}
         <div className="works-button-wrapper">
           <Link to="/places" className="how-work-btn">
             All places

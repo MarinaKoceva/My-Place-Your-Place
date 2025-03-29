@@ -5,7 +5,7 @@ export default function NotFound() {
         <div style={{
             textAlign: "center",
             padding: "100px 20px",
-            color: "white", // 👈 това трябва да направи ВСИЧКИ текстове бели
+            color: "white",
             textShadow: "1px 1px 5px rgba(0,0,0,0.5)"
         }}>
             <h1 style={{ fontSize: "80px", marginBottom: "20px", color: "white" }}>404</h1>

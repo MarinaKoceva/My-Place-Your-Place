@@ -1,18 +1,32 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function EditProfile({ email, onUpdateBirthdate }) {
+export default function EditProfile({ onUpdateProfile, profileData }) {
     const navigate = useNavigate();
-    const [newEmail, setNewEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [birthdate, setBirthdate] = useState({ day: "", month: "", year: "" });
+
+    const [formState, setFormState] = useState(profileData); // 🟢 зареждаме данните
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        if (name.startsWith("birthdate.")) {
+            const field = name.split(".")[1];
+            setFormState(prev => ({
+                ...prev,
+                birthdate: { ...prev.birthdate, [field]: value }
+            }));
+        } else {
+            setFormState(prev => ({
+                ...prev,
+                [name]: type === "checkbox" ? checked : value
+            }));
+        }
+    };
 
     const handleSave = (e) => {
         e.preventDefault();
-        console.log("Profile updated:", { newEmail, password, birthdate });
-        onUpdateBirthdate(birthdate); // Подаваме новата дата обратно
+        onUpdateProfile(formState);
         alert("Profile updated!");
-        navigate("/profile"); // Връщаме обратно към профила
+        navigate("/profile");
     };
 
     return (
@@ -21,59 +35,103 @@ export default function EditProfile({ email, onUpdateBirthdate }) {
                 <button onClick={() => navigate("/profile")} className="back-btn">←</button>
 
                 <div className="profile-header">
-                    <img src="/images/profil-pic1.gif" alt="Profile" className="profile-image" onError={(e) => e.target.src = "/images/default-avatar.png"} />
-                    <h2>{email}</h2>
-                </div>
-
-                <div className="profile-email">
-                    <label>New Email:</label>
-                    <input
-                        type="email"
-                        placeholder="Enter new email"
-                        value={newEmail}
-                        onChange={(e) => setNewEmail(e.target.value)}
+                    <img
+                        src={formState.profilePicUrl || "/images/profil-pic1.gif"}
+                        alt="Profile"
+                        className="profile-image"
+                        onError={(e) => e.target.src = "/images/default-avatar.png"}
                     />
+                    <h2>{formState.fullName || "Full Name"}</h2>
                 </div>
 
-                <div className="profile-password">
-                    <label>New Password:</label>
+                <form onSubmit={handleSave}>
+                    <label>Full Name:</label>
                     <input
-                        type="password"
-                        placeholder="Enter new password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        type="text"
+                        name="fullName"
+                        value={formState.fullName}
+                        onChange={handleChange}
+                        placeholder="Enter your full name"
                     />
-                    <p className="password-note">Password should contain at least 6 characters</p>
-                </div>
 
-                <div className="profile-birthday">
-                    <label>Birthday:</label>
-                    <div className="birthday-select">
-                        <select value={birthdate.day} onChange={(e) => setBirthdate({ ...birthdate, day: e.target.value })}>
-                            <option value="">Day</option>
-                            {[...Array(31)].map((_, i) => (
-                                <option key={i} value={i + 1}>{i + 1}</option>
-                            ))}
-                        </select>
-                        <select value={birthdate.month} onChange={(e) => setBirthdate({ ...birthdate, month: e.target.value })}>
-                            <option value="">Month</option>
-                            {["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].map((m) => (
-                                <option key={m} value={m}>{m}</option>
-                            ))}
-                        </select>
-                        <select value={birthdate.year} onChange={(e) => setBirthdate({ ...birthdate, year: e.target.value })}>
-                            <option value="">Year</option>
-                            {[...Array(50)].map((_, i) => (
-                                <option key={i} value={1990 + i}>{1990 + i}</option>
-                            ))}
-                        </select>
+                    <label>Profile Picture URL:</label>
+                    <input
+                        type="url"
+                        name="profilePicUrl"
+                        value={formState.profilePicUrl}
+                        onChange={handleChange}
+                        placeholder="Enter image URL"
+                    />
+
+                    <label>Gender:</label>
+                    <select name="gender" value={formState.gender} onChange={handleChange}>
+                        <option value="">Select</option>
+                        <option value="Мъж">Man</option>
+                        <option value="Жена">Woman</option>
+                        <option value="Друго">Other</option>
+                    </select>
+
+                    <label>Life Motto:</label>
+                    <textarea
+                        name="bio"
+                        value={formState.bio}
+                        onChange={handleChange}
+                        placeholder="Enter your life motto..."
+                    />
+
+                    {/* 🔔 TOGGLE SWITCH ЗА NOTIFICATIONS */}
+                    <label>Receive Notifications:</label>
+                    <div className="switch">
+                        <input
+                            type="checkbox"
+                            name="notificationsEnabled"
+                            id="notificationsEnabled"
+                            checked={formState.notificationsEnabled}
+                            onChange={handleChange}
+                        />
+                        <span className="slider"></span>
                     </div>
-                </div>
 
-                <div className="profile-buttons">
-                    <button onClick={handleSave} className="btn save-btn">Save</button>
-                </div>
+                    <label>Preferred Language:</label>
+                    <select
+                        name="preferredLanguage"
+                        value={formState.preferredLanguage}
+                        onChange={handleChange}
+                    >
+                        <option value="">Select Language</option>
+                        <option value="Български">Български</option>
+                        <option value="English">English</option>
+                        <option value="Deutsch">Deutsch</option>
+                        <option value="Français">Français</option>
+                    </select>
+
+                    <label>Birthday:</label>
+                    <input
+                        type="date"
+                        name="birthdate"
+                        value={
+                            formState.birthdate?.year && formState.birthdate?.month && formState.birthdate?.day
+                                ? `${formState.birthdate.year}-${String(new Date(`${formState.birthdate.month} 1`).getMonth() + 1).padStart(2, '0')}-${String(formState.birthdate.day).padStart(2, '0')}`
+                                : ""
+                        }
+                        onChange={(e) => {
+                            const [year, month, day] = e.target.value.split("-");
+                            setFormState(prev => ({
+                                ...prev,
+                                birthdate: {
+                                    day,
+                                    month: new Date(`${month}/01`).toLocaleString('en-US', { month: 'long' }),
+                                    year
+                                }
+                            }));
+                        }}
+                    />
+
+                    <div className="profile-buttons">
+                        <button type="submit" className="btn save-btn">Save</button>
+                    </div>
+                </form>
             </section>
         </div>
     );
-}
+}     

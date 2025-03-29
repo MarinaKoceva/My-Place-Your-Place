@@ -33,7 +33,7 @@ export default function PlaceCreate() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Простa валидация
+        // валидация
         if (!formData.title || !formData.category || !formData.address) {
             setError("Please fill in Title, Category and Address.");
             return;

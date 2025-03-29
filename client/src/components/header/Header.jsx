@@ -9,15 +9,13 @@ export default function Header() {
         <header>
             <h1><Link className="home" to="/">My Place Your Place</Link></h1>
             <nav>
-
-                {/* <!-- Logged-in users --> */}
                 {email
                     ? (
                         <div id="user">
                             <Link to="/places">All places</Link>
                             <Link to="/places/create">Create Place</Link>
                             <Link to="/howItWorks">How It Works</Link>
-                            <Link to="/profile">Profile</Link> {/* Добавен Profile линк */}
+                            <Link to="/profile">Profile</Link>
                             <Link to="/logout">Logout</Link>
                         </div>
                     ) : (

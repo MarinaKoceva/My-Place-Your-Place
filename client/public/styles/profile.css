@@ -26,6 +26,143 @@
     justify-content: space-between;
 }
 
+/* 🔶 Подреждане на визитната картичка */
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+  }
+  
+  /* 🔶 Визитна информация */
+  .profile-info-card {
+    background-color: #fdfdfd;
+    padding: 20px 25px;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1); /* сянка вдясно и надолу */
+    flex: 1;
+    min-width: 380px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+  
+  .profile-info-card h2 {
+    margin-bottom: 10px;
+  }
+  
+  .profile-info-card p {
+    margin: 4px 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid orange;
+    object-fit: cover;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+}
+.profile-bio {
+    font-style: italic;
+    color: #444;
+    margin-top: 10px;
+    padding-left: 5px;
+}
+input[type="date"] {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+  
+  /* 🔶 Премахване на хоризонтален скрол */
+  .profile-card {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  /* 🔶 Премахване на хоризонтален скрол */
+  .profile-card {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+/* 🔘 Контейнер за label + switch */
+.switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+/* 🔘 Toggle switch стил */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* 🔘 Кръгчето вътре */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .3s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+/* 🔘 При включено */
+input:checked + .slider {
+    background-color: orange;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+  /* 🔶 Ограничаване на ширина за мобилни */
+  @media screen and (max-width: 768px) {
+    .profile-header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
 /* --- Контейнер за бутоните (Save & Log Out) --- */
 .profile-buttons {
     display: flex;
@@ -234,9 +371,8 @@
 
     .profile-header {
         flex-direction: column;
-        align-items: center;
         text-align: center;
-    }
+      }
 
     .profile-info {
         align-items: center;
