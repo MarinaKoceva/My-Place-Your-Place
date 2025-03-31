@@ -5,7 +5,7 @@ import { useCreatePlace } from "../../api/placeApi";
 export default function PlaceCreate() {
     const navigate = useNavigate();
     const { create: createPlace } = useCreatePlace();
-
+    const [invalidFields, setInvalidFields] = useState([]);
     const [formData, setFormData] = useState({
         imageUrl: "",
         title: "",
@@ -32,25 +32,46 @@ export default function PlaceCreate() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+    
+        const requiredFields = [
+            "imageUrl", "title", "category", "address", "surround", "tourists",
+            "size", "rooms", "availability", "amenities"
+        ];
+    
+        const newInvalidFields = [];
 
-        // валидация
-        if (!formData.title || !formData.category || !formData.address) {
-            setError("Please fill in Title, Category and Address.");
-            return;
+        for (const field of requiredFields) {
+            const value = formData[field];
+            if (!value || value.trim?.() === "" || (typeof value === "number" && isNaN(value))) {
+                newInvalidFields.push(field);
+            }
         }
 
+        if (newInvalidFields.length > 0) {
+            setInvalidFields(newInvalidFields);
+            setError("Please fill in all required fields.");
+            return;
+        }
+    
         if (formData.title.length < 3) {
+            setInvalidFields(["title"]);
             setError("Title must be at least 3 characters.");
             return;
         }
+    
+        setInvalidFields([]);
+        setError(null);
+
 
         try {
             await createPlace(formData);
+            alert("✅ Place created successfully!");
             navigate("/places");
         } catch (err) {
             setError("Failed to create place.");
         }
     };
+    
 
     return (
         <section className="form-container">
@@ -76,7 +97,7 @@ export default function PlaceCreate() {
                         label: "Surroundings:",
                         name: "surround",
                         type: "select",
-                        options: ["Countryside", "Mountain", "Coastal", "Lake", "City", "Village", "Isolated", "Island", "River"]
+                        options: ["Countryside", "Mountain", "Coastal", "Lake", "City", "Village", "Isolated", "Island", "River"], required: true, 
                     },
                     {
                         label: "Tourist sites:",
@@ -88,12 +109,12 @@ export default function PlaceCreate() {
                             "Less than 30-minutes from a lesser-known tourist site",
                             "Less than 30-minutes from sites that only the locals know about",
                             "Remote: more than 30-minutes from any tourist sites"
-                        ]
+                        ], required: true,
                     },
-                    { label: "Size (m²):", name: "size", type: "number", min: 1 },
-                    { label: "Rooms:", name: "rooms", type: "number", min: 1 },
-                    { label: "Availability:", name: "availability", type: "date" },
-                    { label: "Amenities:", name: "amenities", type: "textarea", placeholder: "List amenities..." },
+                    { label: "Size (m²):", name: "size", type: "number", min: 1, required: true },
+                    { label: "Rooms:", name: "rooms", type: "number", min: 1, required: true },
+                    { label: "Availability:", name: "availability", type: "date", required: true },
+                    { label: "Amenities:", name: "amenities", type: "textarea", placeholder: "List amenities...", required: true },
                 ].map((field, index) => (
                     <div className="form-row" key={index}>
                         <label htmlFor={field.name}>{field.label}</label>
