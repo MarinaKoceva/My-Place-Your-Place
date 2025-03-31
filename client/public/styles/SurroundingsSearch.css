@@ -1,0 +1,40 @@
+.surroundings-search {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  
+  .catalog-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+  
+  .search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  label {
+    font-weight: bold;
+    color: white;
+    font-size: 1rem;
+  }
+  
+  select {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    min-width: 100%;
+    font-size: 1rem;
+  }
+  

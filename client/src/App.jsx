@@ -13,6 +13,8 @@ import HowItWorks from './components/how-it-works/HowItWorks';
 import PlaceCatalog from './components/place-catalog/PlaceCatalog';
 import PlaceCreate from './components/place-create/PlaceCreate';
 import PlaceDetails from './components/place-details/PlaceDetails';
+import SurroundingsView from './components/search/SurroundingsView';
+import SurroundingsPage from "./components/search/SurroundingsPage";
 import PlaceEdit from './components/place-edit/PlaceEdit';
 import Profile from './components/profile/Profile';
 import EditProfile from './components/profile/EditProfile';
@@ -89,12 +91,11 @@ function App() {
                         <Route index element={<Home />} />
                         <Route path="/places" element={<PlaceCatalog />} />
                         <Route path="/places/create" element={<PrivateRoute><PlaceCreate /></PrivateRoute>} />
-
                         <Route path="/places/:placeId/details" element={<PlaceDetails email={authData.email} />} />
                         <Route path="/places/:placeId/edit" element={<PrivateRoute><PlaceEdit /></PrivateRoute>} />
-
                         <Route path="/howItWorks" element={<HowItWorks />} />
-
+                        <Route path="/surroundings" element={<SurroundingsPage />} />
+                        <Route path="/surroundings/:type" element={<SurroundingsView />} />
                         <Route
                             path="/profile"
                             element={
