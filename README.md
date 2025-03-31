@@ -6,13 +6,13 @@ The idea behind the project is sustainable and community-oriented – to travel 
 
 ## 🛠️ Technologies
 
-- **Frontend**: React + Vite  
-- **Backend**: Node.js + Express (local REST API)  
-- **Authentication**: Token-based (JWT)  
-- **Database**: MongoDB  
-- **Styling**: CSS (modular styles per component/page)  
-- **Routing**: React Router v6  
-- **State Management**: Context API + Hooks  
+- **Frontend**: React.js with Vite (SPA)
+- **Backend**: Node.js + Express (RESTful API)
+- **Authentication**: JSON Web Tokens (JWT)
+- **Database**: MongoDB (local connection)
+- **Routing**: React Router v6 (with guarded routes)
+- **State Management**: Context API with custom React Hooks
+- **Styling**: Modular CSS (per component/page)
 
 ---
 
