@@ -46,7 +46,7 @@ On the "How it works" page, the application workflow is explained. There's a but
 Clicking on a place opens its details page.
 All users can view places, but only logged-in users can create them.
 If a user is the owner of a place, they can edit or delete it at any time.
-This management is also accessible through the “Profile” page, where users can also view and respond to messages related to their listings as well as their personal card, which they can also change.
+This management is also accessible through the “Profile” page, where users can also view and respond to messages related to their listings as well as their personal card, which they can also change. With the "Search" button, all offers can be viewed according to the location of the property.
 
 # Homepage
 
