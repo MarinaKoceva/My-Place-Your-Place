@@ -14,7 +14,7 @@
 }
 
 /* Стилизация на формите (правоъгълна, бяла, полупрозрачна, с по-широк вид) */
-#login-page,
+
 #register-page {
     position: auto;
     width: 600px; /* Увеличаваме ширината за да стане правоъгълна */
@@ -24,6 +24,19 @@
     box-sizing: border-box;
     background: rgba(255, 255, 255, 0.85); /* Бял полупрозрачен фон */
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Лека сянка */
+    
+}
+
+#login-page {
+    position: auto;
+    width: 600px; /* Увеличаваме ширината за да стане правоъгълна */
+    height: auto;
+    border-radius: 25px; /* По-голямо заобляне на краищата */
+    padding: 40px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.85); /* Бял полупрозрачен фон */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Лека сянка */
+    margin-top: -350px;
 }
 
 /* Контейнер за съдържанието */
@@ -126,6 +139,12 @@ input::placeholder {
     text-decoration: underline;
 }
 
+.auth-container label,
+#login-page label,
+#register-page label {
+    color: black;
+}
+
 @media screen and (max-width: 480px) {
     #login-page,
     #register-page {
@@ -145,3 +164,5 @@ input::placeholder {
         height: 40px;
     }
 }
+
+

@@ -5,7 +5,7 @@ export default function HowItWorks() {
     <section id="works" className="works">
       <div className="container">
         <div className="section-header">
-          <h2>Ready to learn how to get started with MyPlaceYourPlace?</h2>
+          <h2>Get started with MyPlaceYourPlace?</h2>
           <p>Find out how our home exchange system works.</p>
         </div>
 
@@ -30,7 +30,7 @@ export default function HowItWorks() {
           <div className="single-how-works">
             <img src="/images/sn4.png" alt="Guest Points" />
             <div className="text-below">
-              <h2>What are GuestPoints?</h2>
+              <h2>More about non-reciprocal exchanges</h2>
               <p>
                 The MyPlaceYourPlace system can make your home exchange more
                 flexible, simple and easy. Traditional home exchanges (you come

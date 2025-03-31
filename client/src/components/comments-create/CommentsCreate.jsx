@@ -1,12 +1,8 @@
-import commentService from "../../services/commentService";
-
 export default function CommentsCreate({ email, placeId, ownerId, onCreate }) {
     const commentAction = async (formData) => {
         const comment = formData.get('comment');
-
         if (!comment.trim()) return;
 
-        // допълнителна защита, ако ownerId липсва
         if (!ownerId) {
             console.error("ownerId is missing – cannot create comment");
             return;
@@ -21,7 +17,7 @@ export default function CommentsCreate({ email, placeId, ownerId, onCreate }) {
     };
 
     return (
-        <div className="comment-box">
+        <div className="create-comment">
             <h3>Add new comment:</h3>
             <form className="form" action={commentAction}>
                 <textarea name="comment" placeholder="Write your comment here..."></textarea>

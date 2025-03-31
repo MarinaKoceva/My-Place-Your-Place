@@ -53,7 +53,7 @@ export default function Register() {
                         {error && <p className="auth-error">{error}</p>}
 
                         <label htmlFor="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="maria@abv.bg" />
+                        <input type="email" id="email" name="email" placeholder="your@email.com" />
 
                         <label htmlFor="pass">Password:</label>
                         <input type="password" name="password" id="register-password" />
