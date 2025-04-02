@@ -65,7 +65,7 @@ export default function PlaceCreate() {
 
         try {
             await createPlace(formData);
-            alert("✅ Place created successfully!");
+            alert(" Place created successfully!");
             navigate("/places");
         } catch (err) {
             setError("Failed to create place.");

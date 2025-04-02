@@ -11,9 +11,9 @@
 /* Голям контейнер, разделен на две */
 .details-container {
     display: flex;
-    align-items: flex-start; /* 👈 това ще изравни горната линия на лявата и дясната колона */
+    align-items: flex-start; 
     width: 90%;
-    max-width: 1000px; /* така не се разпъва прекалено */
+    max-width: 1000px; 
     background: white;
     padding: 20px;
     border-radius: 15px;
@@ -49,11 +49,11 @@
 .place-image img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* вече няма да реже нищо */
+    object-fit: contain; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     border-radius: 12px;
     display: block;
-    background-color: #f8f8f8; /* ако снимката не заема цялата кутия */
+    background-color: #f8f8f8; 
 }
 
 /* Информацията */
@@ -80,8 +80,8 @@
     justify-content: center;
     gap: 15px;
     margin-top: 20px;
-    max-width: 100%;           /* ново */
-    align-self: center;    /* центрира в рамките на flex родител */
+    max-width: 100%;          
+    align-self: center;
 }
 
 .edit-button, .delete-button, .comment-btn {

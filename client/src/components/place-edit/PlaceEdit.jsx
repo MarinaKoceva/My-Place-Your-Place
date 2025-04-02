@@ -10,7 +10,7 @@ export default function PlaceEdit() {
 
     const [error, setError] = useState(null);
     const [invalidFields, setInvalidFields] = useState([]);
-    const [formData, setFormData] = useState(null); // ще го сетнем след като дойде place
+    const [formData, setFormData] = useState(null); 
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -54,7 +54,7 @@ export default function PlaceEdit() {
 
         try {
             await edit(placeId, formData);
-            alert("✅ Place updated successfully!");
+            alert(" Place updated successfully!");
             navigate("/profile");
         } catch (err) {
             setError("Failed to update the place.");

@@ -37,7 +37,7 @@ function App() {
         birthdate: { day: "", month: "", year: "" },
     });
 
-    // 🟢 Зареждане на визитката при смяна на user
+    // Зареждане на визитката при смяна на user
     useEffect(() => {
         if (authData._id) {
             const saved = localStorage.getItem(`profileInfo_${authData._id}`);

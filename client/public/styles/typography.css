@@ -20,7 +20,7 @@ html, body {
 
 .main-wrapper {
     flex: 1;
-    padding-bottom: 120px; /* важно: оставя място под съдържанието за футера */
+    padding-bottom: 120px; /* оставя място под съдържанието за футера */
 }
 
 *,

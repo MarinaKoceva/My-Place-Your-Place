@@ -48,7 +48,7 @@ header nav {
     align-items: center;
     justify-content: flex-end; /* Избутва навигацията вдясно */
     flex-grow: 1; /* Заема цялото възможно пространство */
-    gap: 15px; /* Разстояние между линковете */
+    gap: 15px; 
 }
 
 #user, #guest {
@@ -64,7 +64,7 @@ header nav {
 }
 
 .nav-links .logout {
-    color: white !important;  /* Бял цвят */
+    color: white !important; 
     cursor: pointer; /* Прави го кликваем */
     text-decoration: none;
     padding: 5px 10px;
@@ -72,7 +72,7 @@ header nav {
 }
 
 .nav-links .logout:hover {
-    color: #ff9800; /* Променя цвета при hover */
+    color: #ff9800; 
 }
 
 /* ЛИНКОВЕ В НАВИГАЦИЯТА */
@@ -87,7 +87,6 @@ nav a {
     display: inline-block;
 }
 
-/* ХОВЪР ЕФЕКТ */
 nav a:hover {
     color: orange;
     background: rgba(255, 255, 255, 0.2);

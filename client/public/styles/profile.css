@@ -3,18 +3,18 @@
     justify-content: center;
     align-items: center;
     padding-top: 10px;
-    min-height: 100vh; /* ✅ Позволява растеж, без да реже */
-    padding-top: 40px; /* малко място под хедъра */
-    padding-bottom: 40px; /* допълнително отдолу */
+    min-height: 100vh; /* Позволява растеж, без да реже */
+    padding-top: 40px; 
+    padding-bottom: 40px; 
     background: url("../images/background.jpg") no-repeat center center/cover;
     backdrop-filter: blur(8px);
 }
 
 /* --- Основен контейнер --- */
 .profile-card {
-    width: 1000px; /* Подходящ размер */
+    width: 1000px; 
     max-height: 90vh;
-    height: auto; /* Достатъчно място */
+    height: auto; 
     background: white;
     border-radius: 25px;
     margin-top: 1px;
@@ -182,8 +182,8 @@ input:checked + .slider:before {
 .profile-buttons {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Разстояние между бутоните */
-    width: 100%; /* Цялата ширина на контейнера */
+    gap: 15px; 
+    width: 100%; 
 }
 
 /* --- Общи стилове за бутоните --- */
@@ -192,7 +192,7 @@ input:checked + .slider:before {
     color: white;
     font-size: 20px;
     padding: 15px;
-    width: 100%; /* Заема цялата ширина на контейнера */
+    width: 100%; 
     border-radius: 10px;
     cursor: pointer;
     text-align: center;
@@ -217,7 +217,7 @@ input:checked + .slider:before {
     height: 120px;
     border-radius: 50%;
     border: 3px solid #ff9800;
-    object-fit: cover; /* 💥 Това е ключът за запазване на пропорциите */
+    object-fit: cover; /* Това е ключът за запазване на пропорциите */
 }
 
 
@@ -247,7 +247,7 @@ input:checked + .slider:before {
     color: #333;
     margin-top: 5px;
 }
-/* --- Бутон за редакция (моливче) --- */
+/* --- Бутон за редакция --- */
 .edit-btn {
     background: none;
     border: none;
@@ -265,9 +265,9 @@ input:checked + .slider:before {
     border-radius: 10px;
     cursor: pointer;
     align-self: center;
-    margin-top: 20px; /* Увеличаваме разстоянието над него */
+    margin-top: 20px; /* Увеличава разстоянието над него */
     text-align: center;
-    display: block; /* Уверяваме се, че е блоков елемент */
+    display: block; 
 }
 
 .save-btn:hover {
@@ -362,7 +362,6 @@ input:checked + .slider:before {
 }
 
 
-/* --- Лог-аут бутон (по-голям и центриран) --- */
 .logout-btn {
     background: orange;
     color: white;

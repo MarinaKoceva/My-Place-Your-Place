@@ -84,7 +84,7 @@ export const useUserPlaces = (userId) => {
     useEffect(() => {
         if (!userId) return;
 
-        request.get('http://localhost:3030/data/places') // или твоя URL
+        request.get('http://localhost:3030/data/places') 
             .then(data => {
                 const userPlaces = Object.values(data).filter(p => p._ownerId === userId);
                 setPlaces(userPlaces);

@@ -3,7 +3,7 @@
     width: 100%;
     padding: 50px 5%;
     text-align: center;
-    backdrop-filter: blur(20px); /* Лек размазващ ефект */
+    backdrop-filter: blur(20px); 
     position: flex;
 }
 
@@ -52,11 +52,11 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Гарантира, че бутонът остава в долната част */
-    min-height: 180px; /* Фиксирана минимална височина за равни контейнери – коригирай според нуждите */
+    justify-content: space-between; 
+    min-height: 180px; 
 }
 
-/* Заглавието на картата – ще бъде бяло */
+/* Заглавие на картата */
 .text-below h2 {
     font-size: 26px;
     font-weight: bold;
@@ -96,7 +96,7 @@
 /* РЕСПОНСИВЕН ДИЗАЙН */
 @media screen and (max-width: 1024px) {
     .works-content {
-        grid-template-columns: 1fr; /* Една колона на по-малки екрани */
+        grid-template-columns: 1fr;
     }
 }
 

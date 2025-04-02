@@ -6,7 +6,7 @@ export default function CommentsCreate({ email, placeId, ownerId, onCreate }) {
         if (!comment.trim()) return;
 
         if (!ownerId) {
-            console.error("ownerId is missing – cannot create comment");
+            console.error("ownerId is missing or cannot create comment");
             return;
         }
 

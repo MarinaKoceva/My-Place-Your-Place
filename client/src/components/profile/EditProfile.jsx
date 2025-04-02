@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function EditProfile({ onUpdateProfile, profileData }) {
     const navigate = useNavigate();
 
-    const [formState, setFormState] = useState(profileData); // 🟢 зареждаме данните
+    const [formState, setFormState] = useState(profileData);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
