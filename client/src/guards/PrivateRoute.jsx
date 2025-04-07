@@ -5,7 +5,7 @@ import { UserContext } from "../contexts/UserContext";
 export default function PrivateRoute({ children }) {
     const authData = useContext(UserContext);
 
-    if (!authData._id) {
+    if (!authData || !authData._id) {
         return <Navigate to="/login" replace />;
     }
 

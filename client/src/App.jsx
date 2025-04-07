@@ -16,14 +16,19 @@ import PlaceDetails from './components/place-details/PlaceDetails';
 import SurroundingsView from './components/search/SurroundingsView';
 import SurroundingsPage from "./components/search/SurroundingsPage";
 import PlaceEdit from './components/place-edit/PlaceEdit';
+import BlogList from './components/blogs/BlogList';
+import BlogDetails from './components/blogs/BlogDetails';
+import BlogCreate from './components/blogs/BlogCreate';
+import BlogEdit from './components/blogs/BlogEdit';
+import PrivateRoute from './guards/PrivateRoute';
 import Profile from './components/profile/Profile';
 import EditProfile from './components/profile/EditProfile';
 import Footer from './components/footer/Footer';
 import './App.css';
 import Logout from './components/logout/Logout';
-import PrivateRoute from './guards/PrivateRoute';
 import GuestRoute from './guards/GuestRoute';
 import NotFound from './components/not-found/NotFound';
+
 
 function App() {
     const [authData, setAuthData] = useState({});
@@ -58,7 +63,11 @@ function App() {
     }, [authData._id]);
 
     const userLoginHandler = (resultData) => {
-        setAuthData({ ...resultData });
+        setAuthData({
+            _id: resultData._id || resultData.ownerId || resultData.userId || '',
+            email: resultData.email,
+            accessToken: resultData.accessToken,
+        });
     };
 
     const userLogoutHandler = () => {
@@ -94,6 +103,18 @@ function App() {
                         <Route path="/places/:placeId/details" element={<PlaceDetails email={authData.email} />} />
                         <Route path="/places/:placeId/edit" element={<PrivateRoute><PlaceEdit /></PrivateRoute>} />
                         <Route path="/howItWorks" element={<HowItWorks />} />
+                        <Route path="/blog" element={<BlogList />} />
+                        <Route path="/blog/:id" element={<BlogDetails />} />
+                        <Route path="/blog/create" element={
+                            <PrivateRoute>
+                                <BlogCreate />
+                            </PrivateRoute>
+                        } />
+                        <Route path="/blog/edit/:id" element={
+                            <PrivateRoute>
+                                <BlogEdit />
+                            </PrivateRoute>
+                        } />
                         <Route path="/surroundings" element={<SurroundingsPage />} />
                         <Route path="/surroundings/:type" element={<SurroundingsView />} />
                         <Route

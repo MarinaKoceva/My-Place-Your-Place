@@ -1,0 +1,14 @@
+.btn-create {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #0077cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-create:hover {
+    background-color: #005fa3;
+  }
+  
