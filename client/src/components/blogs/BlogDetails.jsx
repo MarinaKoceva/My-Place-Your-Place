@@ -32,6 +32,7 @@ export default function BlogDetails() {
 
   return (
     <section className="blog-details">
+      <Link to="/blog" className="back-arrow">←</Link>
       <h2>{blog.title}</h2>
       <p><strong>by:</strong> {blog.authorEmail || "Unknown"}</p>
 

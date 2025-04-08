@@ -16,7 +16,7 @@ export default function Header() {
                             <Link to="/places/create">Create Place</Link>
                             <Link to="/howItWorks">How It Works</Link>
                             <Link to="/surroundings">Search</Link>
-                            <Link to="/blog">Blog</Link>
+                            <Link to="/blog">Stories</Link>
                             <Link to="/profile">Profile</Link>
                             <Link to="/logout">Logout</Link>
                         </div>
@@ -25,7 +25,7 @@ export default function Header() {
                             <Link to="/places">All places</Link>
                             <Link to="/howItWorks">How It Works</Link>
                             <Link to="/surroundings">Search</Link>
-                            <Link to="/blog">Blog</Link>
+                            <Link to="/blog">Stories</Link>
                             <Link to="/login">Login</Link>
                             <Link to="/register">Register</Link>
                         </div>

@@ -33,8 +33,10 @@ export default function BlogCreate() {
       title: formData.title.trim(),
       content: formData.content.trim(),
       authorId: authData._id,
-      authorEmail: authData.email, // 👈 използваме имейл
+      authorEmail: authData.email,
+      authorImage: authData.profilePicUrl || "", 
     };
+    
 
     try {
       await blogService.create(newBlogPost, authData.accessToken);
@@ -47,11 +49,11 @@ export default function BlogCreate() {
 
   return (
     <section className="blog-create">
-      <h2>Create New Blog Post</h2>
+      <h2>Create New Story</h2>
 
       {error && <p className="error">{error}</p>}
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="blog-form">
         <label htmlFor="title">Title:</label>
         <input
           type="text"

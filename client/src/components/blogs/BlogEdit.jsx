@@ -50,10 +50,10 @@ export default function BlogEdit() {
 
   return (
     <section className="blog-edit">
-      <h2>Редактирай блог пост</h2>
-      <form onSubmit={handleSubmit}>
+      <h2>Edit your story</h2>
+      <form onSubmit={handleSubmit} className="blog-form">
         <label>
-          Заглавие:
+          Tytle:
           <input
             type="text"
             name="title"
@@ -63,7 +63,7 @@ export default function BlogEdit() {
           />
         </label>
         <label>
-          Съдържание:
+        Content:
           <textarea
             name="content"
             value={formData.content}
@@ -72,7 +72,7 @@ export default function BlogEdit() {
             rows="10"
           />
         </label>
-        <button type="submit">Запази промените</button>
+        <button type="submit">Save changes</button>
       </form>
     </section>
   );
