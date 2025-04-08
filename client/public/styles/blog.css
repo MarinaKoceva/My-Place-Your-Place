@@ -9,8 +9,8 @@
   --danger-hover: orangered;
   --glass-bg: rgba(255, 255, 255, 0.15);
   --glass-border: rgba(255, 255, 255, 0.2);
-  --text-color: white;
-  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-color: rgb(14, 13, 13);
+  --text-secondary: rgba(46, 45, 45, 0.8);
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
   --border-radius: 16px;
@@ -130,6 +130,7 @@ button[type="submit"]:hover,
 .btn-delete {
   background-color: var(--danger-color);
   color: white;
+  
   
 }
 
