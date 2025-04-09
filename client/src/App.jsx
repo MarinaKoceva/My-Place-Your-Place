@@ -29,7 +29,6 @@ import Logout from './components/logout/Logout';
 import GuestRoute from './guards/GuestRoute';
 import NotFound from './components/not-found/NotFound';
 
-
 function App() {
     const [authData, setAuthData] = useState({});
     const [profileInfo, setProfileInfo] = useState({
@@ -42,7 +41,15 @@ function App() {
         birthdate: { day: "", month: "", year: "" },
     });
 
-    // Зареждане на визитката при смяна на user
+    // Зареждане на auth от localStorage при стартиране
+    useEffect(() => {
+        const savedUser = localStorage.getItem('authData');
+        if (savedUser) {
+            setAuthData(JSON.parse(savedUser));
+        }
+    }, []);
+
+    // Зареждане на профил при логнат потребител
     useEffect(() => {
         if (authData._id) {
             const saved = localStorage.getItem(`profileInfo_${authData._id}`);
@@ -63,11 +70,14 @@ function App() {
     }, [authData._id]);
 
     const userLoginHandler = (resultData) => {
-        setAuthData({
+        const userData = {
             _id: resultData._id || resultData.ownerId || resultData.userId || '',
             email: resultData.email,
             accessToken: resultData.accessToken,
-        });
+        };
+
+        setAuthData(userData);
+        localStorage.setItem('authData', JSON.stringify(userData));
     };
 
     const userLogoutHandler = () => {
@@ -81,6 +91,7 @@ function App() {
             preferredLanguage: "",
             birthdate: { day: "", month: "", year: "" },
         });
+        localStorage.removeItem('authData');
     };
 
     const handleProfileUpdate = (newProfileData) => {
@@ -105,43 +116,42 @@ function App() {
                         <Route path="/howItWorks" element={<HowItWorks />} />
                         <Route path="/blog" element={<BlogList />} />
                         <Route path="/blog/:id" element={<BlogDetails />} />
-                        <Route path="/blog/create" element={
-                            <PrivateRoute>
-                                <BlogCreate />
-                            </PrivateRoute>
-                        } />
-                        <Route path="/blog/edit/:id" element={
-                            <PrivateRoute>
-                                <BlogEdit />
-                            </PrivateRoute>
-                        } />
+                        <Route path="/blog/create" element={<PrivateRoute><BlogCreate /></PrivateRoute>} />
+                        <Route path="/blog/edit/:id" element={<PrivateRoute><BlogEdit /></PrivateRoute>} />
                         <Route path="/surroundings" element={<SurroundingsPage />} />
                         <Route path="/surroundings/:type" element={<SurroundingsView />} />
-                        <Route
-                            path="/profile"
-                            element={
-                                <PrivateRoute>
-                                    <Profile
-                                        _id={authData._id}
-                                        onLogout={userLogoutHandler}
-                                        {...profileInfo}
-                                    />
-                                </PrivateRoute>
-                            }
-                        />
 
-                        <Route
-                            path="/profile/edit"
-                            element={
+                        <Route path="/profile" element={
+                            <PrivateRoute>
+                                <Profile
+                                    _id={authData._id}
+                                    onLogout={userLogoutHandler}
+                                    {...profileInfo}
+                                />
+                            </PrivateRoute>
+                        } />
+
+                        <Route path="/profile/edit" element={
+                            <PrivateRoute>
                                 <EditProfile
                                     onUpdateProfile={handleProfileUpdate}
                                     profileData={profileInfo}
                                 />
-                            }
-                        />
+                            </PrivateRoute>
+                        } />
 
-                        <Route path="/login" element={<Login onLogin={userLoginHandler} />} />
-                        <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
+                        <Route path="/login" element={
+                            <GuestRoute>
+                                <Login onLogin={userLoginHandler} />
+                            </GuestRoute>
+                        } />
+
+                        <Route path="/register" element={
+                            <GuestRoute>
+                                <Register />
+                            </GuestRoute>
+                        } />
+
                         <Route path="/logout" element={<Logout />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
