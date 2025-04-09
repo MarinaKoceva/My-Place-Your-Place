@@ -40,13 +40,13 @@ http://localhost:3030 (Backend)
 MyPlaceYourPlace is a web application that allows users to post their homes for exchange with other users.
 The idea behind the project is sustainable and social – to travel through trust, sharing and reciprocity.
 
-Consits of "Home" page, "All places" catalog page, "How it works", "Login/Register" page (for non-logged users) and "Home" page, " All places " catalog page, "Create place", "How it works", "Profile" and a "Logout" page (for logged users).
+Consits of "Home" page, "All places" catalog page, "How it works", "Stories", "Login/Register" page (for non-logged users) and "Home" page, " All places " catalog page, "Create place", "How it works", "Stories", "Profile" and a "Logout" page (for logged users).
 
 On the "How it works" page, the application workflow is explained. There's a button leading to "All Places", where users can browse all listed homes.
 Clicking on a place opens its details page.
 All users can view places, but only logged-in users can create them.
 If a user is the owner of a place, they can edit or delete it at any time.
-This management is also accessible through the “Profile” page, where users can also view and respond to messages related to their listings as well as their personal card, which they can also change. With the "Search" button, all offers can be viewed according to the location of the property.
+This management is also accessible through the “Profile” page, where users can also view and respond to messages related to their listings as well as their personal card, which they can also change. With the "Search" button, all offers can be viewed according to the location of the property. With "Stories" various stories can be published by logged in users, and everyone can read them, but only the authors can edit or delete them.
 
 # Homepage
 
